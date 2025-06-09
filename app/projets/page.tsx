@@ -16,7 +16,9 @@ export async function generateMetadata(
     // ContentService.projects()
   ])
 
-  let current_category = about.fields.categories.find((category: any)=> category.fields.key === searchParams.category)
+  const search = await searchParams
+
+  let current_category = about.fields.categories.find((category: any)=> category.fields.key === search.category)
 
   return {
     title: current_category ? current_category.fields.title : 'Projets',
@@ -32,7 +34,9 @@ export default async function Projets({
     ContentService.projects()
   ])
 
-  let current_category = about.fields.categories.find((category: any)=> category.fields.key === searchParams.category)
+  const search = await searchParams
+
+  let current_category = about.fields.categories.find((category: any)=> category.fields.key === search.category)
 
   return <>
     <PageTransition />

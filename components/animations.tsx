@@ -1,7 +1,7 @@
 'use client'
 
 import { cloneElement, Component, FunctionComponent } from 'react'
-import { Spring, Trail, Transition as Trans, animated, SpringConfig } from 'react-spring'
+import { Spring, Trail, Transition as Trans, animated, SpringConfig, useTransition } from 'react-spring'
 
 
 interface Props {
@@ -19,11 +19,10 @@ export const Fade: FunctionComponent<Props> = (props) => {
 }
 
 export const FadeOut: FunctionComponent<Props> = (props) => {
-  return <Spring config={{
+  return <Spring delay={2000} config={{
     tension: 200,
-    friction: 100,
-    delay: 2000
-  } as SpringConfig} from={{ willChange: 'transform, opacity', opacity: 1 }} to={{ opacity: 0, willChange: 'transform, opacity' }}>
+    friction: 100
+  }} from={{ willChange: 'transform, opacity', opacity: 1 }} to={{ opacity: 0, willChange: 'transform, opacity' }}>
     {styles => <animated.div style={styles} className={props.className}>{props.children}</animated.div>}
   </Spring>
 }
@@ -80,20 +79,20 @@ export const Bounce: FunctionComponent<Props> = (props) => {
 }
 
 export const Transition: FunctionComponent<{ keys: string[] } & Props> = props => {
-  return <Trans
-    native
-    items={props.keys}
-    keys={0}
-    config={{
+  const transitions = useTransition(props.keys, {
+    from: { willChange: 'transform, opacity', transform: 'translateY(-100%)' },
+    enter: { transform: 'translateY(100%)' },
+    leave: { transform: 'translateY(-100%)' },
+    config: {
       tension: 100,
       friction: 42
-    }}
-    from={{ willChange: 'transform, opacity', transform: 'translateY(100%)' }}
-    enter={{ transform: 'translateY(-100%)' }}>
-    {(loc, state) => style => <animated.div style={style} className={props.className}>
+    }
+  })
+  return transitions((style, item) => (
+    <animated.div style={style} className={props.className}>
       {props.children}
-    </animated.div>}
-  </Trans>
+    </animated.div>
+  ))
 }
 
 interface OnScrollProps {
