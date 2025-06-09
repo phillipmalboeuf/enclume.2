@@ -1,0 +1,81 @@
+// #IMAGES
+
+figure {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+
+  .full_images &,
+  &.img--full {
+    width: 100%;
+  }
+
+  a:not(.a--no_hover) & {
+    filter: saturate(0);
+    transition: filter $fast, transform $fast;
+  }
+
+  a:not(.a--no_hover):focus &,
+  a:not(.a--no_hover):hover & {
+    filter: saturate(1);
+    transform: scale(0.98);
+  }
+
+  .fixed_ratio_img & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+}
+
+.fixed_ratio_img {
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.6%;
+  // margin: 0 auto $rythm*2;
+}
+
+  .img_hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity $fast;
+    overflow: hidden;
+
+    .img_hover_hover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 42%;
+      // transform: translateY(20%);
+
+      transition: transform $fast;
+
+      a {
+        border-bottom-width: 4px;
+      }
+    }
+
+    a:focus &,
+    a:hover &,
+    button:focus &,
+    button:hover & {
+      opacity: 1;
+
+      .img_hover_hover {
+        transform: translateY(0%);
+      }
+    }
+  }

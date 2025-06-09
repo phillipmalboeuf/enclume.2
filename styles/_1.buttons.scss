@@ -1,0 +1,118 @@
+.button,
+button {
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+
+  color: $white;
+  text-decoration: none;
+  font-size: $base_size;
+  font-weight: 500;
+  text-align: center;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: $black;
+  padding: $rythm/3 $rythm;
+  line-height: $rythm;
+  border: 2px solid transparent;
+  border-radius: $border_radius;
+  // box-shadow: 0 2px 4px fade-out($black, 0.6);
+
+  & + & {
+    margin-left: $rythm;
+  }
+
+  &:hover,
+  &:focus {
+    color: $white;
+    background: $black--light;
+    // text-decoration: none;
+  }
+
+  &:active {
+    top: 1px;
+  }
+
+  .dark & {
+    color: $black--dark;
+    background: $white;
+
+    &:hover,
+    &:focus {
+      background: $grey--light;
+    }
+  }
+
+  &.button--grey {
+    color: $grey;
+    background: $grey--light;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background: $black;
+    }
+  }
+
+  &.button--big {
+    font-size: $medium_size;
+    padding: $rythm*2 $rythm*4;
+    border-radius: $border_radius*2;
+  }
+
+  &.button--outline {
+    color: inherit;
+    font-weight: normal;
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid transparent;
+
+    &:hover,
+    &:focus {
+      color: $white;
+      background: $black--dark;
+    }
+  }
+
+  &.button--transparent {
+    color: inherit;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    text-align: inherit;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+
+      h3 {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.button--full {
+    // padding-right: 0;
+    // padding-left: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  &.button--faded {
+    opacity: 0.33;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.33;
+  }
+}

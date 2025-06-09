@@ -1,0 +1,19 @@
+
+// #FOOTER
+
+footer {
+  position: relative;
+  z-index: 1;
+  padding: $rythm;
+  // color: $white;
+  background: $blue--dark;
+
+  a:hover,
+  a:focus {
+    color: $beige;
+  }
+
+  @media #{$tablet_portrait} {
+    padding: $rythm/1.5 $rythm/1.5 $rythm*2.5;
+  }
+}

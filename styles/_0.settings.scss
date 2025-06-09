@@ -1,0 +1,62 @@
+
+// #COLORS
+
+$white: #FFF;
+$black--light: #515356;
+$black: #2D2D2D;
+$black--dark: #111111;
+$grey--light: #EEEEEE;
+$grey: #CCCCCC;
+$grey--dark: #9B9B9B;
+
+$beige: #F4D9C4;
+$teal: #045B67;
+$blue: #B1DEDF;
+$blue--dark: #1E456C;
+$red: #98223B;
+$orange: #FD6433;
+$green--light: #A8E2B8;
+$green: #385834;
+
+
+// #FONTS
+
+$body_font: "Roobert", sans-serif;
+$headings_font: $body_font;
+$alternate_font: $body_font;
+
+
+// #LAYOUT
+
+$base: 16;
+$base_size: $base * 1px;
+$massive_size: (74/$base) * 1rem;
+$giant_size: (64/$base) * 1rem;
+$big_size: (48/$base) * 1rem;
+$medium_size: (32/$base) * 1rem;
+$slight_size: (20/$base) * 1rem;
+$small_size: (12/$base) * 1rem;
+$rythm: 2.5rem;
+$max_width: 42em;
+$border_radius: 1px;
+$letter_spacing: 0.1em;
+
+$number_of_columns: 12;
+$gutter: $rythm;
+
+
+// #ANIMATIONS
+
+$fast: 0.333s;
+$slow: 0.666s;
+$very_slow: 0.999s;
+
+
+// #BREAKPOINTS
+
+$phone: 'all and (max-width:600px)';
+$tablet_portrait: 'all and (max-width:900px)';
+$tablet_landscape: 'all and (max-width:1300px)';
+$big_desktop: 'all and (min-width:1800px)';
+$breakpoints: 'big_desktop' $big_desktop, 'tablet_landscape' $tablet_landscape, 'tablet_portrait' $tablet_portrait, 'phone' $phone;
+

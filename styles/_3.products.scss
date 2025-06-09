@@ -1,0 +1,55 @@
+
+
+// #PRODUCT
+
+.product {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+
+	&.product--soldout {
+
+		img {
+			opacity: 0.33;
+		}
+	}
+}
+
+	.product__images {
+		position: relative;
+		margin-bottom: $rythm;
+
+		picture:nth-child(2) {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+
+	    opacity: 0;
+
+	    @media #{$phone} {
+	    	display: none;
+	    }
+	  }
+
+  	a:hover &,
+    a:focus & {
+
+      picture:nth-child(2) {
+        opacity: 1;
+      }
+    }
+	}
+
+  .product__description {
+
+    *:not(:first-child) {
+      display: none;
+    }
+  }
+
+	.product__content {
+		position: sticky;
+		top: $rythm*4;
+	}
+	

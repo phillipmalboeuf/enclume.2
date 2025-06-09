@@ -1,0 +1,81 @@
+
+// #menu
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 11;
+
+  // transition: transform $fast;
+  // transform: translateY(0);
+
+  summary {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+
+    font-size: $medium_size;
+    text-align: center;    
+    padding: $rythm/2;
+    background: fade-out($green--light, 0.05);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:before {
+      content: "menu";
+    }
+  }
+
+  &[open] {
+    summary {
+      // background: fade-out($green--light, 0.05);
+
+      &:before {
+        content: "fermer";
+      }
+    }
+  }
+
+  .headroom--unpinned + &:not([open]) {
+    // transform: translateY(100%);
+  }
+}
+
+
+
+  @keyframes sweep {
+    0%    { transform: translateY(100%) }
+    100%  { transform: translateY(0%) }
+  }
+
+  .menu__container {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    height: 91vh;
+    width: 100vw;
+    padding: 33vh 0;
+    background: $green--light;
+
+    [open] & {
+      animation: sweep $slow ease-in-out;
+    }
+
+    @media #{$phone} {
+      padding: 25vh 0;
+    }
+  }
+
+    .menu__item {
+      display: inline-block;
+      width: 100%;
+
+      font-size: $big_size;
+      text-transform: lowercase;
+      text-align: center;
+    }

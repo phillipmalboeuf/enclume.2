@@ -1,0 +1,162 @@
+// #ICONS
+
+@keyframes hang {
+  0%    { transform: translate3d(0, -3.33%, 0) }
+  100%  { transform: translate3d(0, 3.33%, 0) }
+}
+
+@keyframes hang2 {
+  0%    { transform: translate3d(0, 4%, 0) }
+  100%  { transform: translate3d(0, -2%, 0) }
+}
+
+.icon {
+  height: (32/$base) * 1rem;
+  width: (32/$base) * 1rem;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: bottom;
+
+  &.icon--logo {
+    width: (128/$base) * 1rem;
+    height: (34/$base) * 1rem;
+
+    .grid--full & {
+      width: 42vw;
+      height: auto;
+    }
+  }
+
+  &.icon--arrow {
+    width: (12/$base) * 1rem;
+    height: (8/$base) * 1rem;
+    color: $black;
+  }
+
+  &.icon--anvil_orange,
+  &.icon--anvil_orange_long,
+  &.icon--anvil_blue,
+  &.icon--anvil_green,
+  &.icon--anvil_hero,
+  &.icon--anvil_homepage,
+  &.icon--anvil_404 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: auto;
+    max-width: none;
+    height: 100vh;
+    color: $orange;
+  }
+
+  &.icon--anvil_orange_long,
+  &.icon--anvil_orange {
+      // width: 100vw;
+      // height: auto;
+
+    @media #{$tablet_portrait} {
+      width: 100vw;
+      height: auto;
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+  &.icon--anvil_blue,
+  &.icon--anvil_404 {
+    color: $blue;
+    width: 100vw;
+    height: auto;
+    background: $white;
+  }
+
+  &.icon--anvil_green {
+    color: $green--light;
+    width: 100vw;
+    height: auto;
+    background: $white;
+  }
+
+  &.icon--anvil_hero {
+    color: $beige;
+    width: 100vw;
+    height: 100vh;
+    padding: 10vh 3vw;
+
+    polygon,
+    path {
+      animation: hang $slow*1.75 ease-in-out infinite alternate;
+    }
+
+    path:nth-child(2) {
+      animation-duration: $slow*2;
+      animation-direction: alternate-reverse;
+    }
+
+    path:nth-child(3) {
+      animation-name: hang2;
+      animation-duration: $slow*2.5;
+    }
+
+    path:nth-child(4) {
+      animation-name: hang2;
+      animation-duration: $slow*1.5;
+      animation-direction: alternate-reverse;
+    }
+  }
+
+  &.icon--anvil_homepage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    z-index: -1;
+
+
+    // path:nth-child(1) {
+    //   fill: $blue--dark;
+    // }
+
+    // path:nth-child(2) {
+    //   fill: $green--light;
+    // }
+
+    // path:nth-child(3) {
+    //   fill: $blue;
+    // }
+  }
+
+  &.icon--anvil_project_green,
+  &.icon--anvil_project_red,
+  &.icon--anvil_project_beige {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    z-index: 0;
+    width: 101vw;
+    max-width: none;
+    height: auto;
+    color: $green--light;
+  }
+
+  &.icon--anvil_project_red { color: $red; }
+  &.icon--anvil_project_beige { color: $beige; }
+
+  &.icon--anvil_transition_green,
+  &.icon--anvil_transition_red,
+  &.icon--anvil_transition_orange {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    max-width: none;
+    height: auto;
+    color: $green;
+  }
+
+  &.icon--anvil_transition_red { color: $red; }
+  &.icon--anvil_transition_orange { color: $orange; width: auto; height: 100vw; }
+}

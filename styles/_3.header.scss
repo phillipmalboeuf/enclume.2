@@ -1,0 +1,47 @@
+
+// #HEADER
+
+header {
+  position: fixed;
+  padding: $rythm/1.33 $rythm;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+
+  a, button, .menu {
+    pointer-events: auto;
+  }
+
+  @media #{$tablet_portrait} {
+    padding: $rythm/2.33 $rythm/2 $rythm/3;
+  }
+}
+
+  .header__link {
+
+    &.active,
+    &:focus {
+      color: $black--dark;
+      border-bottom: 2px solid;
+    }
+  }
+
+  .headroom {
+    transition: transform $fast, background-color $fast;
+    background-color: fade-out($beige, 1);
+
+    &.headroom--not-top {
+      background-color: fade-out($beige, 0.05);
+    }
+
+    &.headroom--pinned {
+      // transform: translateY(0);
+    }
+
+    &.headroom--unpinned {
+      // background-color: fade-out($beige, 1);
+      // transform: translateY(-100%);
+    }
+  }

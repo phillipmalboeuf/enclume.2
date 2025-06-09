@@ -1,0 +1,53 @@
+
+// #HERO
+
+.hero {
+  position: relative;
+  // z-index: 20;
+  width: 100vw;
+  height: 100vh;
+
+  > picture img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  > svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.hero--landing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 600;
+    background: $blue--dark;
+    pointer-events: none;
+
+    @media #{$phone} {
+      top: -5vh;
+      height: 105vh;
+    }
+  }
+
+  &.hero--transition {
+    position: fixed;
+    top: -25vh;
+    left: 0;
+    height: 150vh;
+    z-index: 550;
+    background: $green--light;
+    pointer-events: none;
+
+    &.hero--transition--1 { background: $blue; }
+    &.hero--transition--2 { background: $blue--dark; }
+  }
+}
+
+  
