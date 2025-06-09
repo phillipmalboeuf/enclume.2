@@ -1,7 +1,7 @@
 'use client'
 
 import { cloneElement, Component, FunctionComponent } from 'react'
-import { Spring, Trail, Transition as Trans, animated } from 'react-spring'
+import { Spring, Trail, Transition as Trans, animated, SpringConfig } from 'react-spring'
 
 
 interface Props {
@@ -14,7 +14,7 @@ export const Fade: FunctionComponent<Props> = (props) => {
     tension: 200,
     friction: 100
   }} from={{ willChange: 'transform, opacity', opacity: 0 }} to={{ opacity: 1, willChange: 'transform, opacity' }}>
-    {styles => <div style={styles} className={props.className}>{props.children}</div>}
+    {styles => <animated.div style={styles} className={props.className}>{props.children}</animated.div>}
   </Spring>
 }
 
@@ -23,8 +23,8 @@ export const FadeOut: FunctionComponent<Props> = (props) => {
     tension: 200,
     friction: 100,
     delay: 2000
-  }} from={{ willChange: 'transform, opacity', opacity: 1 }} to={{ opacity: 0, willChange: 'transform, opacity' }}>
-    {styles => <div style={styles} className={props.className}>{props.children}</div>}
+  } as SpringConfig} from={{ willChange: 'transform, opacity', opacity: 1 }} to={{ opacity: 0, willChange: 'transform, opacity' }}>
+    {styles => <animated.div style={styles} className={props.className}>{props.children}</animated.div>}
   </Spring>
 }
 
@@ -57,7 +57,7 @@ export const Height: FunctionComponent<HeightProps> = (props) => {
     tension: 200,
     friction: 50
   }} from={{ willChange: 'transform, opacity', height: 0, overflow: 'hidden' }} to={{ willChange: 'transform, opacity', overflow: 'hidden', height: props.open ? 'auto' : 0 }}>
-    {styles => <div style={styles}>{props.children}</div>}
+    {styles => <animated.div style={styles}>{props.children}</animated.div>}
   </Spring>
 }
 
@@ -66,7 +66,7 @@ export const Glide: FunctionComponent<Props> = (props) => {
     tension: 200,
     friction: 23
   }} from={{ willChange: 'transform, opacity', transform: 'translateY(100%)' }} to={{ transform: 'translateY(0)', willChange: 'transform, opacity' }}>
-    {styles => <div style={styles} className={props.className}>{props.children}</div>}
+    {styles => <animated.div style={styles} className={props.className}>{props.children}</animated.div>}
   </Spring>
 }
 
@@ -75,7 +75,7 @@ export const Bounce: FunctionComponent<Props> = (props) => {
     tension: 300,
     friction: 100
   }} from={{ transform: 'translateY(-15%)' }} to={{ transform: 'translateY(0)' }}>
-    {styles => <div style={styles}>{props.children}</div>}
+    {styles => <animated.div style={styles}>{props.children}</animated.div>}
   </Spring>
 }
 
