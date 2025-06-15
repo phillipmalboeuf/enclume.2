@@ -35,10 +35,10 @@ export class Header extends React.Component<Props, State> {
   render() {
     return <>
       <header ref={element => { this.element = element }}>
-        <div className='grid grid--spaced grid--center_on_tablet_portrait grid--middle'>
+        <nav className='grid grid--spaced grid--center_on_tablet_portrait grid--middle'>
           <Link className='a--no_hover a--no_underline' href='/'><Icon i='logo' /></Link>
 
-          <div className='grid grid--thick_guttered hide_on_tablet_portrait'>
+          <div className='grid grid--guttered'>
             <div className='col'>
               <Link className='header__link' href='/projets'>
                 {this.props.locale === 'fr-CA' ? 'Projets' : 'Projects'}
@@ -49,11 +49,11 @@ export class Header extends React.Component<Props, State> {
                 {this.props.locale === 'fr-CA' ? 'À propos' : 'About us'}
               </Link>
             </div>
-            <div className='col'>
+            {/* <div className='col'>
               <Link className='header__link' href='/prix'>
                 {this.props.locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
               </Link>
-            </div>
+            </div> */}
             <div className='col'>
               <Link className='header__link' href='/contact'>
                 {this.props.locale === 'fr-CA' ? 'Contact' : 'Contact'}
@@ -65,41 +65,46 @@ export class Header extends React.Component<Props, State> {
                 this.context.fetchContent()
               }}>{this.context.locale === 'fr-CA' ? 'En' : 'Fr'}</a>
             </div> */}
-          </div>
-        </div>
-      </header>
-      <details className='menu tablet_portrait_only'>
-        <summary ref={summary => { this.summary = summary }} />
 
-        <div className='menu__container grid grid--vertically_spaced'>
-          <div className='col menu__item'>
-            <Link className='header__link' href='/projets' onClick={e => this.summary.click()}>
-              {this.props.locale === 'fr-CA' ? 'Projets' : 'Projects'}
-            </Link>
+            <details className='col menu'>
+              <summary ref={summary => { this.summary = summary }}>
+                <Icon i='plus' />
+              </summary>
+
+              <div className='menu__container grid'>
+                <ol>
+                  <li className='col menu__item'>
+                    <Link className='header__link' href='/projets' onClick={e => this.summary.click()}>
+                      {this.props.locale === 'fr-CA' ? 'Projets' : 'Projects'}
+                    </Link>
+                  </li>
+                  <li className='col menu__item'>
+                    <Link className='header__link' href='/a-propos' onClick={e => this.summary.click()}>
+                      {this.props.locale === 'fr-CA' ? 'À propos' : 'About us'}
+                    </Link>
+                  </li>
+                  <li className='col menu__item'>
+                    <Link className='header__link' href='/prix' onClick={e => this.summary.click()}>
+                      {this.props.locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
+                    </Link>
+                  </li>
+                  <li className='col menu__item'>
+                    <Link className='header__link' href='/contact' onClick={e => this.summary.click()}>
+                      {this.props.locale === 'fr-CA' ? 'Contact' : 'Contact'}
+                    </Link>
+                  </li>
+                </ol>
+                {/* <div className='col menu__item'>
+                  <a className='header__link' onClick={()=> {
+                    this.context.selectLocale(this.context.locale === 'fr-CA' ? 'en-US' : 'fr-CA')
+                    this.context.fetchContent()
+                  }}>{this.context.locale === 'fr-CA' ? 'En' : 'Fr'}</a>
+                </div> */}
+              </div>
+            </details>
           </div>
-          <div className='col menu__item'>
-            <Link className='header__link' href='/a-propos' onClick={e => this.summary.click()}>
-              {this.props.locale === 'fr-CA' ? 'À propos' : 'About us'}
-            </Link>
-          </div>
-          <div className='col menu__item'>
-            <Link className='header__link' href='/prix' onClick={e => this.summary.click()}>
-              {this.props.locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
-            </Link>
-          </div>
-          <div className='col menu__item'>
-            <Link className='header__link' href='/contact' onClick={e => this.summary.click()}>
-              {this.props.locale === 'fr-CA' ? 'Contact' : 'Contact'}
-            </Link>
-          </div>
-          {/* <div className='col menu__item'>
-            <a className='header__link' onClick={()=> {
-              this.context.selectLocale(this.context.locale === 'fr-CA' ? 'en-US' : 'fr-CA')
-              this.context.fetchContent()
-            }}>{this.context.locale === 'fr-CA' ? 'En' : 'Fr'}</a>
-          </div> */}
-        </div>
-      </details>
+        </nav>
+      </header>
     </>
   }
 }

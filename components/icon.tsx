@@ -10,6 +10,7 @@ export const Icon: FunctionComponent<Props> = (props) => {
         logo: '0 0 810 220',
         divet: '0 0 12 8',
 				arrow: '0 0 17 12',
+				plus: '0 0 20 20',
 				checkmark: '0 0 14.5 14.5',
 				anvil_orange: '0 0 1550.23 1244.31',
 				anvil_orange_long: '0 0 1919.9 3574.16',
@@ -55,6 +56,10 @@ export const Icon: FunctionComponent<Props> = (props) => {
         <rect y='234' width='512' height='44'/>
         <rect y='414' width='512' height='44'/>
       </>,
+			plus: <>
+				<line y1="9.5" x2="20" y2="9.5" stroke="currentColor"/>
+				<line x1="10.5" y1="2.18557e-08" x2="10.5" y2="20" stroke="currentColor"/>
+			</>,
       divet: <polygon points='1.41 0 6 4.58 10.59 0 12 1.41 6 7.41 0 1.41' />,
 			arrow: <><path d='M1,6.8h15c0.6,0,1-0.4,1-1v0c0-0.6-0.4-1-1-1H1c-0.6,0-1,0.4-1,1v0C0,6.3,0.4,6.8,1,6.8z'/><path d='M10.5,1.7l4.6,4.6c0.4,0.4,1,0.4,1.4,0v0c0.4-0.4,0.4-1,0-1.4l-4.6-4.6c-0.4-0.4-1-0.4-1.4,0l0,0
 		C10.1,0.7,10.1,1.3,10.5,1.7z'/><path d='M11.9,11.3l4.6-4.6c0.4-0.4,0.4-1,0-1.4v0c-0.4-0.4-1-0.4-1.4,0l-4.6,4.6c-0.4,0.4-0.4,1,0,1.4l0,0

@@ -2,11 +2,11 @@
 // #menu
 
 .menu {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 11;
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 11;
 
   // transition: transform $fast;
   // transform: translateY(0);
@@ -15,28 +15,31 @@
     cursor: pointer;
     position: relative;
     z-index: 1;
+    transition: transform $fast, color $fast;
 
-    font-size: $medium_size;
-    text-align: center;    
-    padding: $rythm/2;
-    background: fade-out($green--light, 0.05);
+    // font-size: $medium_size;
+    // text-align: center;    
+    // padding: $rythm/2;
+    // background: fade-out($green--light, 0.05);
 
     &::-webkit-details-marker {
       display: none;
     }
 
-    &:before {
-      content: "menu";
-    }
+    // &:before {
+    //   content: "menu";
+    // }
   }
 
   &[open] {
     summary {
+      color: $green--light;
+      transform: rotate(45deg);
       // background: fade-out($green--light, 0.05);
 
-      &:before {
-        content: "fermer";
-      }
+      // &:before {
+      //   content: "fermer";
+      // }
     }
   }
 
@@ -48,34 +51,43 @@
 
 
   @keyframes sweep {
-    0%    { transform: translateY(100%) }
-    100%  { transform: translateY(0%) }
+    0%    { transform: translateX(100%) }
+    100%  { transform: translateX(0%) }
   }
 
   .menu__container {
-    position: absolute;
+    position: fixed;
     z-index: 0;
-    bottom: 0;
-    left: 0;
-    height: 91vh;
+    top: 0;
+    right: 0;
+    min-height: 50lvh;
     width: 100vw;
-    padding: 33vh 0;
-    background: $green--light;
+    max-width: 420px;
+    padding: $rythm;
+    color: $green--light;
+    background: $red;
 
     [open] & {
       animation: sweep $slow ease-in-out;
     }
 
     @media #{$phone} {
-      padding: 25vh 0;
+      padding: $rythm/2;
+    }
+
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
   }
 
     .menu__item {
-      display: inline-block;
+      // display: block;
       width: 100%;
 
-      font-size: $big_size;
-      text-transform: lowercase;
-      text-align: center;
+      font-size: $medium_size;
+      line-height: 1;
+      // text-transform: lowercase;
+      // text-align: center;
     }
