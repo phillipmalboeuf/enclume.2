@@ -1,11 +1,13 @@
 import { OnScroll } from '@/components/animations'
-import { LE, LPE } from '@/components/entry'
+import { LE, LPE, LRE } from '@/components/entry'
 import { Icon } from '@/components/icon'
 import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
 
 import { Metadata, ResolvingMetadata } from 'next'
+import { Slider } from '@/components/slider'
+import { Picture } from '@/components/picture'
 
 export async function generateMetadata(
 ): Promise<Metadata> {
@@ -25,11 +27,21 @@ export default async function Home() {
       <div className='padded padded--big_top relative nooverflow'>
         <Icon i='anvil_homepage' />
 
-        <h2
-          data-parallax="2"
-          className='max_width max_width--tight'>
+        <div>
+          <LRE c={homepage} k='introduction' />
+        </div>
+
+        <Slider draggable={false} fade={true} adaptiveHeight={false} slides={homepage.fields.gallerie.map((slide: any)=>
+          <div key={slide.sys.id}>
+            <Picture src={slide.fields.file.url} alt={slide.fields.title} />
+          </div>
+        )} />
+
+        <h4
+          // data-parallax="2"
+          className='max_width'>
           <OnScroll><LE c={homepage} k='description' /></OnScroll>
-        </h2>
+        </h4>
         <div className='big_bottom' />
 
         <div className='grid grid--thick_guttered grid--spaced_around grid--middle'>

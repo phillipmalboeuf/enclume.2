@@ -3,12 +3,28 @@
 
 .slider {
   position: relative;
+
+  &.slider--fade {
+    .flickity-slider {
+      transform: none !important;
+    }
+  }
 }
 
   .slide {
     width: 100%;
     // padding-left: $gutter/2;
     padding-right: $gutter/2;
+
+    .slider--fade & {
+      opacity: 0;
+      transform: none !important;
+      transition: opacity $slow;
+
+      &.is-selected {
+        opacity: 1;
+      }
+    }
   }
 
   .flickity-viewport {

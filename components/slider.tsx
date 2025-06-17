@@ -22,8 +22,7 @@ interface Props {
   adaptiveHeight?: boolean,
   columns?: number,
   prevNextButtons?: boolean,
-  fade?: boolean,
-  opacity?: boolean
+  fade?: boolean
 }
 interface State {
   loaded: boolean
@@ -98,7 +97,7 @@ export class Slider extends React.Component<Props, State> {
   }
 
   render() {
-    return <div className={`slider${this.props.progress ? ' slider--progressbar' : ''}${this.props.fade ? ' slider--fade' : ''}${this.props.opacity ? ' slider--opacity' : ''}`} ref={(element)=> { this.element = element }}>
+    return <div className={`slider${this.props.progress ? ' slider--progressbar' : ''}${this.props.fade ? ' slider--fade' : ''}`} ref={(element)=> { this.element = element }}>
       {this.props.slides.map((slide, index)=> <div className='slide' ref={element => { this.slides[index] = element }} style={this.props.columns && { width: `${100/this.props.columns}%` }} key={index} onClick={e => this.next()}>
         {slide}
       </div>)}
