@@ -133,7 +133,7 @@ h3 {
 
 h4 {
   font-size: $slight_size;
-  line-height: $rythm/1.5;
+  line-height: $rythm/1.75;
 }
 
 h5 {
@@ -336,7 +336,7 @@ sub {
 .light_green_back { background-color: $green--light; }
 .grey_back { background-color: $grey; }
 .red_back { background-color: $red; }
-.teal_back { background-color: $teal; }
+.teal_back { background-color: $teal; color: $green--light; }
 .blue_back { background-color: $blue; }
 .orange_back { background-color: $orange; }
 .beige_back { background-color: $beige; }

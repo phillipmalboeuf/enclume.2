@@ -5,15 +5,32 @@ footer {
   position: relative;
   z-index: 1;
   padding: $rythm;
-  // color: $white;
+  color: $beige;
   background: $blue--dark;
 
   a:hover,
   a:focus {
-    color: $beige;
+    color: $white;
+  }
+
+  .grid {
+    &:first-child {
+      margin-right: auto;
+    }
+
+    &:nth-child(2) {
+      align-self: flex-start;
+      margin-right: $gutter * 2;
+      
+      @media #{$tablet_portrait} {
+        order: 99;
+        margin-top: $rythm/1.5;
+        margin-right: 0;
+      }
+    }
   }
 
   @media #{$tablet_portrait} {
-    padding: $rythm/1.5 $rythm/1.5 $rythm*2.5;
+    padding: $rythm/1.5 $rythm/1.5 $rythm;
   }
 }

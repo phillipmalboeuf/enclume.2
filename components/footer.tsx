@@ -27,9 +27,9 @@ export class Footer extends React.Component<Props, State> {
       <footer>
         <div className='grid grid--spaced grid--middle'>
           
-          <div className='grid grid--guttered grid--middle hide_on_phone'>
-            <div className='col'><Link className='a--no_hover' href='/'><Icon i='logo' /></Link></div>
-            <div className='col hide_on_phone'><p>Atelier de<br />développement<br />territorial</p></div>
+          <div className='grid grid--guttered grid--middle'>
+            {/* <div className='col hide_on_phone'><Link className='a--no_hover' href='/'><Icon i='logo' /></Link></div> */}
+            <div className='col'><h4>coopérative en<br />aménagement<br />du territoire</h4></div>
           </div>
           
 
@@ -37,8 +37,12 @@ export class Footer extends React.Component<Props, State> {
             <div className='col col--tablet_portrait--12of12 hide_on_phone' />
             <div className='col'>
               <a href='tel:514-756-4113' target='_blank'>514-756-4113</a><br />
+            </div>
+            <div className='col'>
               <a href='mailto:info@enclume.ca' target='_blank'>info@enclume.ca</a>
             </div>
+          </div>
+          <div className='grid grid--thick_guttered'>
             <div className='col hide_on_phone'>
               <a href='https://goo.gl/maps/NpgUxc6ewHBePHk88' target='_blank'>4529 rue Clark,<br />
               Bureau #404<br />
