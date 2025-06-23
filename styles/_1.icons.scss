@@ -37,6 +37,7 @@
   &.icon--anvil_orange_long,
   &.icon--anvil_blue,
   &.icon--anvil_green,
+  &.icon--anvil_engagements_green,
   &.icon--anvil_hero,
   &.icon--anvil_homepage,
   &.icon--anvil_404 {
@@ -48,6 +49,7 @@
     max-width: none;
     height: 100vh;
     color: $orange;
+    overflow: hidden;
   }
 
   &.icon--anvil_orange_long,
@@ -71,11 +73,16 @@
     background: $white;
   }
 
-  &.icon--anvil_green {
+  &.icon--anvil_green,
+  &.icon--anvil_engagements_green {
     color: $green--light;
     width: 100vw;
     height: auto;
     background: $white;
+  }
+
+  &.icon--anvil_engagements_green {
+    // height: calc(100vh + 100px);
   }
 
   &.icon--anvil_hero {

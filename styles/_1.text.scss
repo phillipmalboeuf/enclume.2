@@ -338,7 +338,7 @@ sub {
 .red_back { background-color: $red; }
 .teal_back { background-color: $teal; color: $green--light; }
 .blue_back { background-color: $blue; }
-.orange_back { background-color: $orange; }
+.orange_back { color: $black; background-color: $orange; }
 .beige_back { background-color: $beige; }
 .image_back { background-size: cover; background-position: center; }
 

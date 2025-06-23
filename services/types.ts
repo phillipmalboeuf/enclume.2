@@ -9,6 +9,7 @@ export interface TypeAboutPageFields {
     teamTitle: EntryFieldTypes.Symbol;
     teamBody?: EntryFieldTypes.Text;
     teamMembers?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeTeamMemberSkeleton>>;
+    conclusion?: EntryFieldTypes.RichText;
     collaboratorsTitle: EntryFieldTypes.Symbol;
     collaboratorsBody?: EntryFieldTypes.Text;
     collaborators?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeCollaboratorSkeleton>>;
@@ -116,6 +117,18 @@ export type TypeEngagement<Modifiers extends ChainModifiers, Locales extends Loc
 
 export function isTypeEngagement<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeEngagement<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'engagement'
+}
+
+export interface TypeEngagementsPageFields {
+    introduction?: EntryFieldTypes.RichText;
+    engagements?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeEngagementSkeleton>>;
+}
+
+export type TypeEngagementsPageSkeleton = EntrySkeletonType<TypeEngagementsPageFields, "engagementsPage">;
+export type TypeEngagementsPage<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeEngagementsPageSkeleton, Modifiers, Locales>;
+
+export function isTypeEngagementsPage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeEngagementsPage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'engagementsPage'
 }
 
 export interface TypeHomepageFields {

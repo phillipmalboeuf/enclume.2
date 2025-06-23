@@ -5,7 +5,6 @@ import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import { TypeTeamMemberFields } from '@/services/types'
 import { Metadata } from 'next'
-import Link from 'next/link'
 
 export async function generateMetadata(
   params,
@@ -33,7 +32,7 @@ export default async function About() {
           </h2>
         </OnScroll>
 
-        <OnScroll className='grid grid--guttered'>
+        {/* <OnScroll className='grid grid--guttered'>
           <div className='col col--3of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
             data-parallax="2"
           >
@@ -44,17 +43,17 @@ export default async function About() {
           >
             <LRE c={about} k='introBodyRight' />
           </div>
-        </OnScroll>
+        </OnScroll> */}
 
         <div className='big_bottom' />
 
-        <OnScroll className='grid grid--guttered'>
+        <OnScroll className='grid grid--thick_guttered'>
           <div className='col col--12of12'
             data-parallax="1.5"
           >
             <LE c={about} k='categoriesTitle' />
           </div>
-          {about.fields.categories.map((category: any, index: number)=> <div key={category.sys.id} className='col col--3of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
+          {about.fields.categories.map((category: any, index: number)=> <div key={category.sys.id} className='col col--4of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
             data-parallax="1.5"
           >
             <h3><LE c={category} k='title' /></h3>
@@ -87,7 +86,7 @@ export default async function About() {
                     <span>{value as string}</span>
                   </div>)}</div>}
 
-                  <div className='img_hover_hover padded padded--tight grid grid--bottom'>
+                  <div className='img_hover_hover padded padded--tight grid grid--bottom orange_back'>
                     <div>
                     {member.fields.phone && <h3 className='small_bottom'><a href={`tel:${member.fields.phone}`} target='_blank'><LE c={member} k='phone' /></a></h3>}
                     {member.fields.emailAddress && <h3 className='small_bottom'><a href={`mailto:${member.fields.emailAddress}`} target='_blank'>{member.fields.emailAddress.replace('@','\n@')}</a></h3>}
@@ -138,7 +137,13 @@ export default async function About() {
 
         <div className='big_bottom' />
 
-        <OnScroll className='grid grid--tight_guttered'>
+        <OnScroll className='grid medium_bottom'>
+          <div className='col col--5of12 col--tablet_portrait--9of12 col--phone--12of12'>
+            <LRE c={about} k='conclusion' />
+          </div>
+        </OnScroll>
+
+        {/* <OnScroll className='grid grid--tight_guttered'>
           <div className='col col--12of12'
             data-parallax="-1.5"
           >
@@ -156,7 +161,7 @@ export default async function About() {
           </div>)}
         </OnScroll>
 
-        <div className='big_bottom' />
+        <div className='big_bottom' /> */}
       </div>
     </main>
   </>

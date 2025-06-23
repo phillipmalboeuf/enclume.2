@@ -3,7 +3,7 @@ import type { Asset, Entry, EntryCollection } from 'contentful'
 import type { Document } from '@contentful/rich-text-types'
 import { contentful } from '@/clients/contentful'
 import { GetStaticPropsContext } from 'next'
-import { TypeAboutPageSkeleton, TypeAwardSkeleton, TypeAwardsPageSkeleton, TypeCategorySkeleton, TypeCollaboratorSkeleton, TypeContactSkeleton, TypeHomepageSkeleton, TypeProjectSkeleton, TypeTeamMemberSkeleton } from './types'
+import { TypeAboutPageSkeleton, TypeAwardSkeleton, TypeAwardsPageSkeleton, TypeCategorySkeleton, TypeCollaboratorSkeleton, TypeContactSkeleton, TypeEngagementsPageSkeleton, TypeHomepageSkeleton, TypeProjectSkeleton, TypeTeamMemberSkeleton } from './types'
 
 
 const envLocale = process.env.LOCALE
@@ -16,6 +16,8 @@ export const ContentService = {
     (await contentful.getEntries<TypeContactSkeleton>({ content_type: 'contact', locale })).items[0],
   aboutPage: async (locale: string=envLocale) =>
     (await contentful.getEntries<TypeAboutPageSkeleton>({ content_type: 'aboutPage', locale })).items[0],
+  engagementsPage: async (locale: string=envLocale) =>
+    (await contentful.getEntries<TypeEngagementsPageSkeleton>({ content_type: 'engagementsPage', locale })).items[0],
   categories: async (locale: string=envLocale) =>
     contentful.getEntries<TypeCategorySkeleton>({ content_type: 'category', locale }),
   projects: async (locale: string=envLocale) =>
