@@ -14,18 +14,19 @@ table {
   width: 100%;
   overflow: visible;
   border-collapse: collapse;
+  margin: $rythm*0.5 0 $rythm;
 
   tr {
-    border-bottom: 1px solid $grey;
+    border-top: 1px solid;
 
-    &:first-child {
-      font-weight: bold;
-      border-top: 2px solid $grey;
-    }
+    // &:first-child {
+    //   font-weight: bold;
+    //   border-top: 2px solid $grey;
+    // }
 
-    &:last-child {
-      border-width: 2px;
-    }
+    // &:last-child {
+    //   border-width: 2px;
+    // }
 
     &.tr--updated {
       background-color: fade-out($blue, 0.8);
@@ -36,14 +37,22 @@ table {
     text-align: left;
   }
 
+  th, td {
+    padding: $rythm*0.5 $rythm*1.5 $rythm*0.5 0;
+  }
+
   td {
-    min-width: 12em;
-    max-width: 12em;
+    // min-width: 12em;
+    // max-width: 12em;
     overflow: visible;
     position: relative;
 
     &.td--updated {
       background-color: fade-out($blue, 0.8);
+    }
+
+    a {
+      text-decoration: underline;
     }
   }
 

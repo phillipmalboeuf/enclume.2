@@ -58,9 +58,14 @@ export default async function Projet({
 
         <div
           data-parallax="1.5"
-          className='medium_bottom max_width'>
-          {project.fields.subTitle && <OnScroll><p className='slight'><LE c={project} k='subTitle' /></p></OnScroll>}
-          <OnScroll><LRE c={project} k={'description'} /></OnScroll>
+          className='grid grid--thick_guttered grid--spaced_around'>
+          <div className='col col--6of12 col--tablet_portrait--12of12 medium_bottom'>
+            {project.fields.subTitle && <OnScroll><hr /><p className='slight'><LE c={project} k='subTitle' /></p></OnScroll>}
+            {project.fields.table && <OnScroll><LRE c={project} k={'table'} /></OnScroll>}
+          </div>
+          <div className='col col--6of12 col--tablet_portrait--12of12 medium_bottom'>
+            <OnScroll><LRE c={project} k={'description'} /></OnScroll>
+          </div>
         </div>
 
         <div

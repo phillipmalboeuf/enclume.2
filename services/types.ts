@@ -159,6 +159,7 @@ export interface TypeProjectFields {
     url: EntryFieldTypes.Symbol;
     hero: EntryFieldTypes.AssetLink;
     description: EntryFieldTypes.RichText;
+    table: EntryFieldTypes.RichText;
     gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     galleryGridSizes?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     previous: EntryFieldTypes.Symbol;
