@@ -68,6 +68,11 @@ h1 {
   font-weight: normal;
   margin-bottom: $rythm;
 
+  @media #{$tablet_portrait} {
+    font-size: $medium_size;
+    line-height: $rythm/1.2;
+  }
+
   &.h1--giant {
     font-size: $giant_size;
     line-height: $rythm*2;
@@ -126,8 +131,8 @@ h3 {
   font-weight: normal;
 
   @media #{$tablet_portrait} {
-    font-size: $slight_size;
-    line-height: $rythm/1.5;
+    // font-size: $slight_size;
+    // line-height: $rythm/1.5;
   }
 }
 

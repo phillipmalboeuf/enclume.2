@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Icon: FunctionComponent<Props> = (props) => {
-  return <svg className={`icon icon--${props.i}`} viewBox={({
+  return <svg className={`icon icon--${props.i}`} preserveAspectRatio={props.i === 'anvil_engagements_green' ? 'xMidYMin slice' : 'none'} viewBox={({
         logo: '0 0 810 220',
         divet: '0 0 12 8',
 				arrow: '0 0 17 12',

@@ -8,6 +8,26 @@
     .flickity-slider {
       transform: none !important;
     }
+
+    .slide {
+      padding-right: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .padded & {
+      margin: 0 ($gutter * -1);
+
+      @media #{$tablet_portrait} {
+        margin: 0 calc($gutter/2 * -1);
+      }
+
+      @media #{$phone} {
+        margin: 0 calc($gutter/3 * -1);
+      }
+    }
   }
 }
 

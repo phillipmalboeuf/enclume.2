@@ -82,7 +82,7 @@
   }
 
   &.icon--anvil_engagements_green {
-    // height: calc(100vh + 100px);
+    height: calc(100vh + 100px);
   }
 
   &.icon--anvil_hero {
@@ -116,8 +116,8 @@
   &.icon--anvil_homepage {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: -5px;
+    width: calc(100vw + 10px);
     height: auto;
     z-index: -1;
 

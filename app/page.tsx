@@ -37,6 +37,8 @@ export default async function Home() {
           </div>
         )} />
 
+        <div className='normal_bottom' />
+
         <h4
           // data-parallax="2"
           className='max_width'>
