@@ -83,13 +83,13 @@ export default async function Projet({
       </div>
     </main>
     <div className='grid'>
-      {previous && <Link href={`/projets/${previous.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--middle orange_back padded'>
-        <span className='big' style={{ transform: 'rotate(90deg)' }}>↓</span>
+      {previous && <Link href={`/projets/${previous.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle light_green_back padded'>
+        <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(90deg)' }}>↓</span>
         <h3 className='flat_bottom'><LE c={previous} k={'title'} /></h3>
       </Link>}
-      {next && <Link href={`/projets/${next.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--middle teal_back padded'>
+      {next && <Link href={`/projets/${next.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle blue_back padded'>
         <h3 className='flat_bottom'><LE c={next} k={'title'} /></h3>
-        <span className='big' style={{ transform: 'rotate(-90deg)' }}>↓</span>
+        <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(-90deg)' }}>↓</span>
       </Link>}
     </div>
   </>

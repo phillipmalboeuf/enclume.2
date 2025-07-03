@@ -189,25 +189,25 @@ a {
     font-size: $base_size;
   }
 
-  &:focus,
+  &:focus-visible,
   &:hover {
     // color: $blue--dark;
-    // text-decoration: underline;
-    border-bottom: 2px solid;
+    opacity: 0.9;
+    // border-bottom: 2px solid;
 
     h2 &,
     &.big {
-      border-bottom-width: 3px;
+      // border-bottom-width: 3px;
     }
 
     &.padded {
       border: none;
 
       & > h3 {
-        border-bottom: 3px solid;
+        // border-bottom: 3px solid;
 
         @media #{$phone} {
-          border-bottom-width: 2px;
+          // border-bottom-width: 2px;
         }
       }
     }
