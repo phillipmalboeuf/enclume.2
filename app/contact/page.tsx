@@ -27,7 +27,7 @@ export default async function Contact() {
       <span className='hide_on_tablet_portrait'><Icon i='anvil_orange' /></span>
       <span className='tablet_portrait_only'><Icon i='anvil_orange_long' /></span>
 
-      <div className='grid grid--full grid--middle'>
+      <div className='grid grid--full grid--middle orange_back' style={{ background: 'none' }}>
         <OnScroll className='padded'>
           <p className='big'>
             <a href={`tel:${contact.fields.phoneNumber}`} target='_blank'><LE c={contact} k='phoneNumber' /></a><br />
