@@ -36,15 +36,17 @@ export default async function Home() {
             <Picture src={slide.fields.file.url} alt={slide.fields.title} />
           </div>
         )} />
+        <div className='relative'>
+          <Icon i='anvil_homepage_blue' />
+          <div className='normal_bottom' />
 
-        <div className='normal_bottom' />
-
-        <h4
-          // data-parallax="2"
-          className='max_width'>
-          <OnScroll><LE c={homepage} k='description' /></OnScroll>
-        </h4>
-        <div className='big_bottom' />
+          <h4
+            // data-parallax="2"
+            className='max_width beige'>
+            <OnScroll><LE c={homepage} k='description' /></OnScroll>
+          </h4>
+          <div className='big_bottom' />
+        </div>
 
         <div className='grid grid--thick_guttered grid--spaced_around grid--middle'>
           {homepage.fields.projects.map((project: any, index: number)=> <div key={project.fields.url}

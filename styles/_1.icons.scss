@@ -40,6 +40,7 @@
   &.icon--anvil_engagements_green,
   &.icon--anvil_hero,
   &.icon--anvil_homepage,
+  &.icon--anvil_homepage_blue,
   &.icon--anvil_404 {
     position: absolute;
     top: 0;
@@ -133,6 +134,12 @@
     // path:nth-child(3) {
     //   fill: $blue;
     // }
+  }
+
+  &.icon--anvil_homepage_blue {
+    top: -$gutter * 5;
+    left: -$gutter;
+    width: calc(100vw + ($gutter*2));
   }
 
   &.icon--anvil_project_green,
