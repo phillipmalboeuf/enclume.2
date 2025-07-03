@@ -64,7 +64,7 @@ export default async function Projets({
           }).map(project => <div key={project.fields.url} className='col col--4of12 col--tablet_landscape--6of12 col--tablet_portrait--12of12'>
             <Link href={`/projets/${project.fields.url}`}>
               <OnScroll>
-                <div className='small_bottom'><LPE c={project} k='hero' /></div>
+                {project.fields.hero && <div className='small_bottom'><LPE c={project} k='hero' /></div>}
                 <p className='slight'>
                   <LE c={project} k='title' /><br />
                   {project.fields.subTitle && <span className='a__hide'><LE c={project} k='subTitle' /></span>}
