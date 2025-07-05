@@ -192,7 +192,7 @@ a {
   &:focus-visible,
   &:hover {
     // color: $blue--dark;
-    opacity: 0.9;
+    opacity: 0.56;
     // border-bottom: 2px solid;
 
     h2 &,
@@ -345,7 +345,7 @@ sub {
 .teal_back { background-color: $teal; color: $green--light; }
 .blue_back { background-color: $blue; }
 .orange_back { color: $black; background-color: $orange; }
-.beige_back { background-color: $beige; }
+.beige_back { color: $black; background-color: $beige; }
 .image_back { background-size: cover; background-position: center; }
 
 

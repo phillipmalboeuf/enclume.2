@@ -15,12 +15,17 @@
     cursor: pointer;
     position: relative;
     z-index: 1;
-    transition: transform $fast, color $fast;
+    transition: transform $fast, color $fast, opacity $fast;
 
     // font-size: $medium_size;
     // text-align: center;    
     // padding: $rythm/2;
     // background: fade-out($green--light, 0.05);
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.56;
+    }
 
     &::-webkit-details-marker {
       display: none;
@@ -31,7 +36,7 @@
       display: none;
       content: '';
     }
-    
+
     &::marker {
       display: none;
       content: '';

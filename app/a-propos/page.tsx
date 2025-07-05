@@ -86,7 +86,7 @@ export default async function About() {
                     <span>{value as string}</span>
                   </div>)}</div>}
 
-                  <div className='img_hover_hover padded padded--tight grid grid--bottom orange_back'>
+                  <div className='img_hover_hover padded padded--tight grid grid--bottom beige_back'>
                     <div>
                     {member.fields.phone && <h3 className='small_bottom'><a href={`tel:${member.fields.phone}`} target='_blank'><LE c={member} k='phone' /></a></h3>}
                     {member.fields.emailAddress && <h3 className='small_bottom'><a href={`mailto:${member.fields.emailAddress}`} target='_blank'>{member.fields.emailAddress.replace('@','\n@')}</a></h3>}
