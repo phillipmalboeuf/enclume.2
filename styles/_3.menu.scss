@@ -24,6 +24,17 @@
 
     &::-webkit-details-marker {
       display: none;
+      content: '';
+    }
+
+    &::-moz-details-marker {
+      display: none;
+      content: '';
+    }
+    
+    &::marker {
+      display: none;
+      content: '';
     }
 
     // &:before {
@@ -106,6 +117,7 @@
         // display: block;
         width: 100%;
         line-height: 1;
+        margin-bottom: $rythm/6;
         // text-transform: lowercase;
         // text-align: center;
       }

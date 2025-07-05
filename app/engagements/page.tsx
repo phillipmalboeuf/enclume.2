@@ -23,7 +23,7 @@ export default async function About() {
   const engagements = await ContentService.engagementsPage()
   return <>
     <PageTransition />
-    <main className='blue_back' role='main'>
+    <main className='light_green_back' role='main'>
       <Icon i='anvil_engagements_green' />
 
       <div className='padded padded--big_top'>
