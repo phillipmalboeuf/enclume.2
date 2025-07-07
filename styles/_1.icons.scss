@@ -137,9 +137,10 @@
   }
 
   &.icon--anvil_homepage_blue {
-    top: -$gutter * 5;
+    top: -20vw;
     left: -$gutter;
     width: calc(100vw + ($gutter*2));
+    height: auto;
   }
 
   &.icon--anvil_project_green,
