@@ -107,10 +107,8 @@
 
     @media #{$phone} {
       max-width: none;
-    }
-
-    @media #{$phone} {
-      padding: $rythm/2;
+      height: 100lvh;
+      padding: $rythm/2 $rythm/2 $rythm*2;
     }
 
     ol {
@@ -125,6 +123,10 @@
         margin-bottom: $rythm/6;
         // text-transform: lowercase;
         // text-align: center;
+
+        &--logo {
+          margin-bottom: $rythm;
+        }
       }
 
       &:first-child {

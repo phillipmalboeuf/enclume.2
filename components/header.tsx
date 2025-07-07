@@ -84,6 +84,9 @@ export function Header({ locale }: Props) {
 
             <div className='menu__container grid grid--guttered grid--column grid--spaced'>
               <ol>
+                <li className='menu__item menu__item--logo'>
+                  <Link className='a--no_hover a--no_underline' href='/' onClick={e => summaryRef.current?.click()}><Icon i='logo' /></Link>
+                </li>
                 <li className='menu__item'>
                   <Link className='header__link' href='/projets' onClick={e => summaryRef.current?.click()}>
                     {locale === 'fr-CA' ? 'Projets' : 'Projects'}
