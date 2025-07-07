@@ -141,6 +141,12 @@
     left: -$gutter;
     width: calc(100vw + ($gutter*2));
     height: auto;
+
+    @media #{$tablet_portrait} {
+      left: calc($gutter - 50vw);
+      top: -35vw;
+      width: calc(150vw + ($gutter*2));
+    }
   }
 
   &.icon--anvil_project_green,
