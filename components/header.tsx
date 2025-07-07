@@ -79,7 +79,6 @@ export function Header({ locale }: Props) {
                 }, 6)
               }
             }}>
-              menu
               <Icon i='plus' />
             </summary>
 

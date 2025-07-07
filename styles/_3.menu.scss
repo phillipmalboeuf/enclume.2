@@ -47,6 +47,10 @@
       content: "";
     }
 
+    // iOS Safari specific fix
+    list-style: none;
+    list-style-type: none;
+
     // &:before {
     //   content: "menu";
     // }
