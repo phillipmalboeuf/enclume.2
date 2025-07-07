@@ -56,8 +56,8 @@ export default async function About() {
           {about.fields.categories.map((category: any, index: number)=> <div key={category.sys.id} className='col col--4of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
             data-parallax="1.5"
           >
-            <h3><LE c={category} k='title' /></h3>
-            <p><LE c={category} k='description' /></p>
+            <h2><LE c={category} k='title' /></h2>
+            <p className='slight'><LE c={category} k='description' /></p>
           </div>)}
         </OnScroll>
 
