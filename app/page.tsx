@@ -31,7 +31,7 @@ export default async function Home() {
           <LRE c={homepage} k='introduction' />
         </div>
 
-        <Slider draggable={false} fade={true} adaptiveHeight={false} slides={homepage.fields.gallerie.map((slide: any)=>
+        <Slider draggable={false} fade={true} adaptiveHeight={false} autoPlay slides={homepage.fields.gallerie.map((slide: any)=>
           <div key={slide.sys.id}>
             <Picture src={slide.fields.file.url} alt={slide.fields.title} />
           </div>
