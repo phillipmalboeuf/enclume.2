@@ -68,7 +68,7 @@ export default async function Home() {
       </div>
     </main>
 
-    <div className='padded padded--thick overflow_top text_center teal_back' style={{ position: 'relative', zIndex: 1 }}>
+    <div className='padded padded--thick text_center teal_back' style={{ position: 'relative', zIndex: 1 }}>
       <OnScroll><Link href='/projets' className='big' style={{ zIndex: 1 }}><LE c={homepage} k='cta' /></Link></OnScroll>
     </div>
   </>
