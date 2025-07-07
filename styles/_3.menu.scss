@@ -61,6 +61,13 @@
     }
   }
 
+  a {
+    &:hover,
+    &:focus-visible {
+      opacity: 0.56;
+    }
+  }
+
   &[open] {
     summary {
       color: $green--light;
