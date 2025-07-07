@@ -28,23 +28,23 @@
     }
 
     &::-webkit-details-marker {
-      display: none;
-      content: '';
-    }
+			display: none;
+			content: "";
+		}
 
     &::-moz-details-marker {
       display: none;
-      content: '';
+      content: "";
     }
 
     &::details-marker {
       display: none;
-      content: '';
+      content: "";
     }
 
     &::marker {
       display: none;
-      content: '';
+      content: "";
     }
 
     // &:before {
