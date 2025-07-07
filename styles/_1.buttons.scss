@@ -93,6 +93,13 @@ button {
         // text-decoration: underline;
       }
     }
+
+    @media #{$tablet_portrait} {
+      .tablet_portrait_only {
+        display: block;
+        margin-top: $rythm/4;
+      }
+    }
   }
 
   &.button--full {
