@@ -64,15 +64,19 @@ export function Header({ locale }: Props) {
 
           <details className={`col menu ${isOpen ? 'menu--open' : ''}`}>
             <summary ref={summaryRef} onClick={e => {
+              e.preventDefault()
+              
               if (isOpen) {
-                e.preventDefault()
                 setIsOpen(false)
 
                 setTimeout(() => {
                   (summaryRef.current?.parentElement as HTMLDetailsElement).removeAttribute('open')
                 }, 666)
               } else {
-                setIsOpen(!isOpen)
+                (summaryRef.current?.parentElement as HTMLDetailsElement).setAttribute('open', 'open')
+                setTimeout(() => {
+                  setIsOpen(true)
+                }, 6)
               }
             }}>
               <Icon i='plus' />

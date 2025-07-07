@@ -95,7 +95,7 @@ export default async function About() {
                 </div>
               </div>
               <div className='tablet_portrait_only'>
-                <h3><LE c={member} k='name' /></h3>
+                <h4><LE c={member} k='name' /></h4>
               </div>
             </button>
           </div>)}

@@ -53,6 +53,13 @@ svg {
     transition: opacity $fast;
     overflow: hidden;
 
+    @media #{$tablet_portrait} {
+      h3 {
+        font-size: $slight_size;
+        line-height: $rythm/1.666;
+      }
+    }
+
     .img_hover_hover {
       position: absolute;
       bottom: 0;

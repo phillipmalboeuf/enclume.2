@@ -93,20 +93,20 @@
     padding: $rythm;
     color: $green--light;
     background: $red;
-    transition: transform $slow ease-in-out;
-    transform: translateX(0%);
+    transition: transform $slow ease-in-out 0.333ms;
+    transform: translateX(100%);
+
+    details.menu--open & {
+      transform: translateX(0%);
+    }
+
+    // details:not([open]) &,
+    details:not(.menu--open) & {
+      transform: translateX(100%);
+    }
 
     @media #{$phone} {
       max-width: none;
-    }
-
-    details[open] & {
-      animation: sweep $slow ease-in-out;
-    }
-
-    details:not([open]) &,
-    details:not(.menu--open) & {
-      transform: translateX(100%);
     }
 
     @media #{$phone} {
