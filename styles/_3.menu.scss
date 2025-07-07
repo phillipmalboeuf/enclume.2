@@ -37,6 +37,11 @@
       content: '';
     }
 
+    &::details-marker {
+      display: none;
+      content: '';
+    }
+
     &::marker {
       display: none;
       content: '';
