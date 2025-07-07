@@ -19,7 +19,7 @@ svg {
     transition: filter $fast, transform $fast;
   }
 
-  a:not(.a--no_hover):focus &,
+  a:not(.a--no_hover):focus-visible &,
   a:not(.a--no_hover):hover & {
     filter: saturate(1);
     transform: scale(0.98);
@@ -75,9 +75,9 @@ svg {
       }
     }
 
-    a:focus &,
+    a:focus-visible &,
     a:hover &,
-    button:focus &,
+    button:focus-visible &,
     button:hover & {
       opacity: 1;
 

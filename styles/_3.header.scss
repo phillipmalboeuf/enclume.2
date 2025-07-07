@@ -22,7 +22,7 @@ header {
   .header__link {
 
     &.active,
-    &:focus {
+    &:focus-visible {
       color: $black--dark;
       border-bottom: 2px solid;
     }

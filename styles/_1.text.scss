@@ -328,10 +328,10 @@ sub {
 .blue { color: $blue; }
 .beige { color: $beige; }
 
-.green_on_hover { &:hover, &:focus { color: $green; } }
-.red_on_hover { &:hover, &:focus { color: $red; } }
-.blue_on_hover { &:hover, &:focus { color: $blue; } }
-.beige_on_hover { &:hover, &:focus { color: $beige; } }
+.green_on_hover { &:hover, &:focus-visible { color: $green; } }
+.red_on_hover { &:hover, &:focus-visible { color: $red; } }
+.blue_on_hover { &:hover, &:focus-visible { color: $blue; } }
+.beige_on_hover { &:hover, &:focus-visible { color: $beige; } }
 
 
 // #BACKGROUNDS
