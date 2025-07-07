@@ -84,7 +84,7 @@ export function Header({ locale }: Props) {
 
             <div className='menu__container grid grid--guttered grid--column grid--spaced'>
               <ol>
-                <li className='menu__item menu__item--logo'>
+                <li className='menu__item menu__item--logo tablet_portrait_only'>
                   <Link className='a--no_hover a--no_underline' href='/' onClick={e => summaryRef.current?.click()}><Icon i='logo' /></Link>
                 </li>
                 <li className='menu__item'>
