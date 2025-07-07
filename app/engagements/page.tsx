@@ -23,12 +23,12 @@ export default async function About() {
   const engagements = await ContentService.engagementsPage()
   return <>
     <PageTransition />
-    <main className='light_green_back' role='main'>
+    <main className='' role='main'>
       <Icon i='anvil_engagements_green' />
 
       <div className='padded padded--big_top'>
         <OnScroll className='grid medium_bottom'>
-          <div className='col col--8of12 col--tablet_portrait--9of12 col--phone--12of12 slight'>
+          <div className='col col--7of12 col--tablet_portrait--9of12 col--phone--12of12 slight'>
             <LRE c={engagements} k='introduction' />
           </div>
         </OnScroll>
