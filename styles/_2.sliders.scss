@@ -39,7 +39,7 @@
     .slider--fade & {
       opacity: 0;
       transform: none !important;
-      transition: opacity $slow;
+      transition: opacity $slow*2;
 
       &.is-selected {
         opacity: 1;
