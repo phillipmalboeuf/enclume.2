@@ -30,6 +30,7 @@ export class Footer extends React.Component<Props, State> {
           <div className='grid grid--guttered grid--middle'>
             {/* <div className='col hide_on_phone'><Link className='a--no_hover' href='/'><Icon i='logo' /></Link></div> */}
             <div className='col'><h4>coopérative en<br />aménagement<br />du territoire</h4></div>
+            <div className='col col--tablet_portrait--12of12 phone_only' />
           </div>
           
 
@@ -43,7 +44,7 @@ export class Footer extends React.Component<Props, State> {
             </div>
           </div>
           <div className='grid grid--thick_guttered'>
-            <div className='col hide_on_phone'>
+            <div className='col'>
               <a href='https://goo.gl/maps/NpgUxc6ewHBePHk88' target='_blank'>4529 rue Clark,<br />
               Bureau #404<br />
               Montréal, Québec<br />
