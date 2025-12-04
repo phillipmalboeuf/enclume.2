@@ -5,6 +5,7 @@ import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import { TypeTeamMemberFields } from '@/services/types'
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
 
 export async function generateMetadata(
@@ -60,7 +61,7 @@ export default async function About() {
       </div>
 
       <div className='padded padded--thick orange_back'>
-        <h1 className='text_center'><a href='/prix'>Découvrir les prix Enclume</a></h1>
+        <h1 className='text_center'><Link href='/prix'>Découvrir les prix Enclume</Link></h1>
       </div>
     </main>
   </>
