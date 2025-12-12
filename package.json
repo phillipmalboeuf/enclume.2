@@ -14,7 +14,7 @@
     "contentful": "^11.7.0",
     "flickity": "^3.0.0",
     "headroom.js": "^0.12.0",
-    "next": "15.3.3",
+    "next": "^15.5.9",
     "normalize.css": "^8.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

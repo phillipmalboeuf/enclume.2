@@ -74,7 +74,7 @@ export default async function About() {
           ><p className='big'><LE c={about} k='teamBody' /></p></div>
 
           <div className='col col--12of12'></div>
-          {about.fields.teamMembers.filter((member: any)=> member.fields).map((member: { fields: any, sys: { id: string } })=> <div key={member.sys.id} className='col col--4of12 col--tablet_landscape--6of12'>
+          {about.fields.teamMembers.filter((member: any)=> member.fields).map((member: { fields: any, sys: { id: string } })=> <div key={member.sys.id} className='col col--3of12 col--tablet_landscape--6of12'>
             <button className='button--transparent'>
               <div className='relative'>
                 <LPE c={member} k='photo' />
