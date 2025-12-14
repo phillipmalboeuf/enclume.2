@@ -46,22 +46,24 @@ export default async function Projets({
       research: 'beige_back'
     } as any)[current_category.fields.key as string] : ''}`} role='main'>
       <div className='padded padded--big_top'>
-        <nav className='grid grid--guttered'>
-          <OnScroll className='col col--tablet_portrait--12of12'><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></OnScroll>
-          {about.fields.categories.map((category: any)=> <OnScroll className='col' key={category.fields.title}>
-            <Link className={`header__link${current_category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
-          </OnScroll>)}
-        </nav>
+        <div className='grid grid--guttered'>
+        <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
+          <nav className='grid grid--tight_guttered grid--column'>
+            <OnScroll className='col col--tablet_portrait--12of12'><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></OnScroll>
+            {about.fields.categories.map((category: any)=> <OnScroll className='col' key={category.fields.title}>
+              <Link className={`header__link${current_category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
+            </OnScroll>)}
+          </nav>
+        </div>
 
-        <div className='normal_bottom' />
-
+        <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
         <div className='grid grid--guttered'>
           {projects.items.filter(project => !current_category
             || (project.fields.categories && project.fields.categories.length > 0 && project.fields.categories.filter((category: any)=> category.fields).map((category: any)=> category.fields.key).includes(current_category.fields.key))
             || (project.fields.category && project.fields.category.fields.key === current_category.fields.key)
           ).sort((a, b)=> {
             return (a.fields.releaseDate ? new Date(a.fields.releaseDate) : new Date('1970-01-01')) > (b.fields.releaseDate ? new Date(b.fields.releaseDate) : new Date('1970-01-01')) ? -1 : 1
-          }).map(project => <div key={project.fields.url} className='col col--4of12 col--tablet_landscape--6of12 col--tablet_portrait--12of12'>
+          }).map(project => <div key={project.fields.url} className='col col--6of12 col--tablet_landscape--6of12 col--tablet_portrait--12of12'>
             <Link href={`/projets/${project.fields.url}`}>
               <OnScroll>
                 {project.fields.hero && <div className='small_bottom'><LPE c={project} k='hero' /></div>}
@@ -72,6 +74,8 @@ export default async function Projets({
               </OnScroll>
             </Link>
           </div>)}
+        </div>
+        </div>
         </div>
 
         <div className='medium_bottom' />
