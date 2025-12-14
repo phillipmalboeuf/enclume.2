@@ -18,7 +18,7 @@
     }
 
     .padded & {
-      margin: 0 ($gutter * -1);
+      margin: 0 ($gutter * -1) 0 0;
 
       @media #{$tablet_portrait} {
         margin: 0 calc($gutter/2 * -1);

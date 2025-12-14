@@ -24,31 +24,29 @@ export default async function Home() {
   return <>
     <PageTransition />
     <main role='main'>
-      <div className='padded padded--big_top relative nooverflow'>
+      <div className='padded padded--big_top padded--flat_bottom relative nooverflow'>
         <Icon i='anvil_homepage' />
 
         <div>
           <LRE c={homepage} k='introduction' />
         </div>
 
-        <Slider draggable={false} fade={true} adaptiveHeight={false} autoPlay={3333} slides={homepage.fields.gallerie.map((slide: any)=>
-          <div key={slide.sys.id}>
-            <Picture src={slide.fields.file.url} alt={slide.fields.title} />
+        <div className='grid grid--guttered grid--bottom'>
+          <div className='col col--4of12 col--tablet_portrait--12of12'>
+            <h4><LE c={homepage} k='description' /></h4>
+            <div className='normal_bottom' />
           </div>
-        )} />
-        <div className='relative'>
-          <Icon i='anvil_homepage_blue' />
-          <div className='normal_bottom' />
-
-          <h4
-            // data-parallax="2"
-            className='max_width beige'>
-            <OnScroll><LE c={homepage} k='description' /></OnScroll>
-          </h4>
-          <div className='big_bottom' />
+          <div className='col col--8of12 col--tablet_portrait--12of12'>
+            <Slider draggable={false} fade={true} adaptiveHeight={true} autoPlay={6666} slides={homepage.fields.gallerie.map((slide: any)=>
+              <figure className='figure--caption' key={slide.sys.id}>
+                <Picture src={slide.fields.file.url} alt={slide.fields.title} />
+                {slide.fields.description && <figcaption className='teal_back'>{slide.fields.description}</figcaption>}
+              </figure>
+            )} />
+          </div>
         </div>
 
-        <div className='grid grid--thick_guttered grid--spaced_around grid--middle'>
+        {/* <div className='grid grid--thick_guttered grid--spaced_around grid--middle'>
           {homepage.fields.projects.map((project: any, index: number)=> <div key={project.fields.url}
             data-parallax={4 - (index % 3 === 0 ? 0.5 : index % 3 === 1 ? 1 : 0)}
             className={`col col--${homepage.fields.projectsGridSizes[index]}of12 col--tablet_portrait--12of12`}>
@@ -63,13 +61,12 @@ export default async function Home() {
 
             <div className='normal_bottom hide_on_tablet_portrait' />
           </div>)}
-        </div>
-        
+        </div> */}
       </div>
     </main>
 
-    <div className='padded padded--thick text_center teal_back' style={{ position: 'relative', zIndex: 1 }}>
+    {/* <div className='padded padded--thick text_center teal_back' style={{ position: 'relative', zIndex: 1 }}>
       <OnScroll><Link href='/projets' className='big' style={{ zIndex: 1 }}><LE c={homepage} k='cta' /></Link></OnScroll>
-    </div>
+    </div> */}
   </>
 }
