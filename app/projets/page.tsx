@@ -37,14 +37,17 @@ export default async function Projets({
   const search = await searchParams
 
   let current_category = about.fields.categories.find((category: any)=> category.fields.key === search.category)
+  let current_category_index = about.fields.categories.findIndex((category: any)=> category.fields.key === search.category)
 
   return <>
     <PageTransition />
     <main className={`${current_category ? ({
-      planning: 'light_green_back',
-      participation: 'red_back',
-      research: 'beige_back'
-    } as any)[current_category.fields.key as string] : ''}`} role='main'>
+      0: 'light_green_back',
+      1: 'red_back',
+      2: 'beige_back',
+      3: 'orange_back',
+      4: 'teal_back',
+    } as any)[current_category_index] : ''}`} role='main'>
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
         <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
