@@ -48,11 +48,11 @@ export default async function About() {
         <div className='big_bottom' />
 
         <OnScroll className='grid grid--thick_guttered'>
-          <div className='col col--12of12'
+          {/* <div className='col col--12of12'
             data-parallax="1.5"
           >
             <LE c={about} k='categoriesTitle' />
-          </div>
+          </div> */}
           {about.fields.categories.map((category: any, index: number)=> <div key={category.sys.id} className='col col--4of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
             data-parallax="1.5"
           >
@@ -64,17 +64,17 @@ export default async function About() {
         <div className='big_bottom' />
 
         <OnScroll className='grid grid--guttered'>
-          <div className='col col--12of12'
+          {/* <div className='col col--12of12'
             data-parallax="1.5"
           >
             <h6><LE c={about} k='teamTitle' /></h6>
-          </div>
+          </div> */}
           <div className='col col--8of12 col--tablet_portrait--10of12 col--phone--12of12'
             data-parallax="3"
           ><p className='big'><LE c={about} k='teamBody' /></p></div>
 
           <div className='col col--12of12'></div>
-          {about.fields.teamMembers.filter((member: any)=> member.fields).map((member: { fields: any, sys: { id: string } })=> <div key={member.sys.id} className='col col--3of12 col--tablet_landscape--6of12'>
+          {about.fields.teamMembers.filter((member: any)=> member.fields).map((member: { fields: any, sys: { id: string } })=> <div key={member.sys.id} className='col col--4of12 col--tablet_landscape--6of12'>
             <button className='button--transparent'>
               <div className='relative'>
                 <LPE c={member} k='photo' />
