@@ -68,6 +68,11 @@
     overflow-y: hidden;
   }
 
+  &.grid--full_height {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
   &.grid--grow {
     
     *:first-child {
