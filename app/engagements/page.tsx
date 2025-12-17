@@ -36,7 +36,7 @@ export default async function About() {
 
         <div className='big_bottom' />
 
-        <OnScroll className='grid grid--tight_guttered'>
+        <OnScroll className='grid grid--guttered'>
           {/* <div className='col col--12of12'
             data-parallax="-1.5"
           >
@@ -47,7 +47,7 @@ export default async function About() {
             className='col col--10of12 col--phone--12of12'><p className='big'><LE c={about} k='engagementsBody' /></p></div> */}
 
           <div className='col col--12of12'></div>
-          {engagements.fields.engagements.map((engagement: { fields: any }, i: number) => <div key={i} className='col col--4of12 col--tablet_portrait--6of12 col--phone--12of12 underline_links slight'
+          {engagements.fields.engagements.map((engagement: { fields: any }, i: number) => <div key={i} className='col col--5of12 col--tablet_portrait--6of12 col--phone--12of12 underline_links slight'
             data-parallax="-0.5"
           >
             {engagement.fields.title && <h2><LE c={engagement} k='title' /></h2>}
@@ -60,9 +60,9 @@ export default async function About() {
         <div className='big_bottom' />
       </div>
 
-      <div className='padded padded--thick orange_back'>
+      {/* <div className='padded padded--thick orange_back'>
         <h1 className='text_center'><Link href='/prix'>Découvrir les prix Enclume</Link></h1>
-      </div>
+      </div> */}
     </main>
   </>
 }

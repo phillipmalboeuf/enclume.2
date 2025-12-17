@@ -45,6 +45,11 @@ export function Header({ locale }: Props) {
               {locale === 'fr-CA' ? 'À propos' : 'About us'}
             </Link>
           </div>
+          <div className='col hide_on_tablet_portrait'>
+            <Link className='header__link' href='/engagements'>
+              {locale === 'fr-CA' ? 'Engagements' : 'Engagements'}
+            </Link>
+          </div>
           {/* <div className='col'>
             <Link className='header__link' href='/prix'>
               {locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
@@ -83,7 +88,7 @@ export function Header({ locale }: Props) {
             </summary>
 
             <div className='menu__container grid grid--guttered grid--column grid--spaced'>
-              <ol>
+              {/* <ol>
                 <li className='menu__item menu__item--logo tablet_portrait_only'>
                   <Link className='a--no_hover a--no_underline' href='/' onClick={e => summaryRef.current?.click()}><Icon i='logo' /></Link>
                 </li>
@@ -112,7 +117,7 @@ export function Header({ locale }: Props) {
                     {locale === 'fr-CA' ? 'Contact' : 'Contact'}
                   </Link>
                 </li>
-              </ol>
+              </ol> */}
               <ol>
                 <li className='menu__item'>
                   <a href='https://www.facebook.com/enclume.ca/' target='_blank'>Facebook</a>
