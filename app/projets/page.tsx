@@ -3,7 +3,7 @@ import { LE, LPE } from '@/components/entry'
 import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
-import FilterNav from './FilterNav'
+import FilterNav from './Filternav'
 
 import { Metadata } from 'next'
 
