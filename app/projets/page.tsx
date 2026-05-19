@@ -4,7 +4,7 @@ import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import FilterNav from './filternav'
+import FilterNav from './Filternav'
 
 import { Metadata } from 'next'
 
@@ -41,6 +41,9 @@ export default async function Projets({
 
   return <>
     <PageTransition />
+    <Suspense fallback={null}>
+      <FilterNav categories={about.fields.categories} />
+    </Suspense>
     <main className={`${current_category ? ({
       0: 'light_green_back',
       1: 'red_back',
@@ -51,9 +54,6 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-            <Suspense fallback={null}>
-              <FilterNav categories={about.fields.categories} />
-            </Suspense>
           </div>
 
           <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
