@@ -67,7 +67,7 @@ export default async function About() {
           <div className='col col--12of12'
             data-parallax="1.5"
           >
-            <h6><LE c={about} k='teamTitle' /></h6>
+            <LE c={about} k='teamTitle' />
           </div>
           <div className='col col--8of12 col--tablet_portrait--10of12 col--phone--12of12'
             data-parallax="3"
