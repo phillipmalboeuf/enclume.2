@@ -47,7 +47,7 @@ export default async function About() {
 
         <div className='big_bottom' />
 
-      <OnScroll className='grid grid--thick_guttered'>
+        <OnScroll className='grid grid--thick_guttered'>
           <div className='col col--12of12'
             data-parallax="1.5"
           >
