@@ -3,8 +3,6 @@ import { LE, LPE } from '@/components/entry'
 import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
-import { Suspense } from 'react'
-import FilterNav from './filternav'
 
 import { Metadata } from 'next'
 
@@ -41,9 +39,6 @@ export default async function Projets({
 
   return <>
     <PageTransition />
-    <Suspense fallback={null}>
-      <FilterNav categories={about.fields.categories} />
-    </Suspense>
     <main className={`${current_category ? ({
       0: 'light_green_back',
       1: 'red_back',
@@ -53,29 +48,35 @@ export default async function Projets({
     } as any)[current_category_index] : ''}`} role='main'>
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
-          <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-          </div>
+        <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
+          <nav className='grid grid--tight_guttered grid--column'>
+            <OnScroll className='col col--tablet_portrait--12of12'><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></OnScroll>
+            {about.fields.categories.map((category: any)=> <OnScroll className='col' key={category.fields.title}>
+              <Link className={`header__link${search.category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
+            </OnScroll>)}
+          </nav>
+        </div>
 
-          <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
-            <div className='grid grid--guttered'>
-              {projects.items.filter(project => !current_category
-                || (project.fields.categories && project.fields.categories.length > 0 && project.fields.categories.filter((category: any)=> category.fields).map((category: any)=> category.fields.key).includes(current_category.fields.key))
-                || (project.fields.category && project.fields.category.fields.key === current_category.fields.key)
-              ).sort((a, b)=> {
-                return (a.fields.releaseDate ? new Date(a.fields.releaseDate) : new Date('1970-01-01')) > (b.fields.releaseDate ? new Date(b.fields.releaseDate) : new Date('1970-01-01')) ? -1 : 1
-              }).map(project => <div key={project.fields.url} className='col col--6of12 col--tablet_landscape--6of12 col--tablet_portrait--12of12'>
-                <Link href={`/projets/${project.fields.url}`}>
-                  <OnScroll>
-                    {project.fields.hero && <div className='small_bottom'><LPE c={project} k='hero' /></div>}
-                    <p className='slight'>
-                      <LE c={project} k='title' /><br />
-                      {project.fields.subTitle && <span className='a__hide'><LE c={project} k='subTitle' /></span>}
-                    </p>
-                  </OnScroll>
-                </Link>
-              </div>)}
-            </div>
-          </div>
+        <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
+        <div className='grid grid--guttered'>
+          {projects.items.filter(project => !current_category
+            || (project.fields.categories && project.fields.categories.length > 0 && project.fields.categories.filter((category: any)=> category.fields).map((category: any)=> category.fields.key).includes(current_category.fields.key))
+            || (project.fields.category && project.fields.category.fields.key === current_category.fields.key)
+          ).sort((a, b)=> {
+            return (a.fields.releaseDate ? new Date(a.fields.releaseDate) : new Date('1970-01-01')) > (b.fields.releaseDate ? new Date(b.fields.releaseDate) : new Date('1970-01-01')) ? -1 : 1
+          }).map(project => <div key={project.fields.url} className='col col--6of12 col--tablet_landscape--6of12 col--tablet_portrait--12of12'>
+            <Link href={`/projets/${project.fields.url}`}>
+              <OnScroll>
+                {project.fields.hero && <div className='small_bottom'><LPE c={project} k='hero' /></div>}
+                <p className='slight'>
+                  <LE c={project} k='title' /><br />
+                  {project.fields.subTitle && <span className='a__hide'><LE c={project} k='subTitle' /></span>}
+                </p>
+              </OnScroll>
+            </Link>
+          </div>)}
+        </div>
+        </div>
         </div>
 
         <div className='medium_bottom' />
