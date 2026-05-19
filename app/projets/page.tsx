@@ -4,7 +4,7 @@ import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
 import { Suspense } from 'react'
-import FilterNav from './Filternav'
+import FilterNav from './filternav'
 
 import { Metadata } from 'next'
 
