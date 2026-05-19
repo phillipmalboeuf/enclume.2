@@ -50,10 +50,10 @@ export default async function Projets({
     } as any)[current_category_index] : ''}`} role='main'>
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
-        <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12' style={{ alignSelf: 'flex-start', position: 'sticky', top: '2rem' }}>
-          <nav className='grid grid--tight_guttered grid--column'>
-            <div className='col col--tablet_portrait--12of12'><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></div>
-            {about.fields.categories.map((category: any)=> <div className='col' key={category.fields.title}>
+        <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
+          <nav style={{ position: 'fixed', top: '6rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <div><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></div>
+            {about.fields.categories.map((category: any)=> <div key={category.fields.title}>
               <Link className={`header__link${current_category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
             </div>)}
           </nav>
