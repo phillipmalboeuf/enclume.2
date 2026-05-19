@@ -51,7 +51,7 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
         <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-          <nav style={{ position: 'fixed', top: '6rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+          <nav style={{ position: 'fixed', top: '6rem', left: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
             <div><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></div>
             {about.fields.categories.map((category: any)=> <div key={category.fields.title}>
               <Link className={`header__link${current_category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
