@@ -66,11 +66,11 @@
     }
   }
 
-  &.icon--anvil_blue{
+  &.icon--anvil_blue {
     color: $blue;
     width: 100vw;
     height: auto;
-    background: $blue;
+    background: transparent;
   }
 
   &.icon--anvil_404 {
