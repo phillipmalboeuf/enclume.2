@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { LE } from '@/components/entry'
 import { useSearchParams } from 'next/navigation'
 
 export default function FilterNav({ categories }: { categories: any[] }) {
