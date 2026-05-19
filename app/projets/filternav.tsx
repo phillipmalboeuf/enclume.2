@@ -8,15 +8,15 @@ export default function FilterNav({ categories }: { categories: any[] }) {
   const currentCategory = searchParams.get('category')
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: '5rem',
-      left: '2.5rem',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0.25rem',
-      zIndex: 10
-    }}>
+<nav style={{
+  position: 'fixed',
+  top: '8rem',
+  left: '2.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.25rem',
+  zIndex: 9
+}}>
       <div>
         <Link className={`header__link${!currentCategory ? ' active' : ''}`} href='/projets'>
           Tous
