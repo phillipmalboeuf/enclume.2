@@ -51,7 +51,7 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
         <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-          <nav className='grid grid--tight_guttered grid--column'>
+          <nav className='grid grid--tight_guttered grid--column' style={{ position: 'sticky', top: '2rem' }}>
             <OnScroll className='col col--tablet_portrait--12of12'><Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link></OnScroll>
             {about.fields.categories.map((category: any)=> <OnScroll className='col' key={category.fields.title}>
               <Link className={`header__link${current_category === category.fields.key ? ' active' : ''}`} href={`/projets?category=${category.fields.key}`}><LE c={category} k='title' /></Link>
