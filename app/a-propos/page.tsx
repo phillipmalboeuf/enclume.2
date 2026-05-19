@@ -64,11 +64,11 @@ export default async function About() {
         <div className='big_bottom' />
 
         <OnScroll className='grid grid--guttered'>
-          {/* <div className='col col--12of12'
+          <div className='col col--12of12'
             data-parallax="1.5"
           >
             <h6><LE c={about} k='teamTitle' /></h6>
-          </div> */}
+          </div>
           <div className='col col--8of12 col--tablet_portrait--10of12 col--phone--12of12'
             data-parallax="3"
           ><p className='big'><LE c={about} k='teamBody' /></p></div>
@@ -143,7 +143,7 @@ export default async function About() {
           </div>
         </OnScroll>
 
-        {/* <OnScroll className='grid grid--tight_guttered'>
+        <OnScroll className='grid grid--tight_guttered'>
           <div className='col col--12of12'
             data-parallax="-1.5"
           >
@@ -161,7 +161,7 @@ export default async function About() {
           </div>)}
         </OnScroll>
 
-        <div className='big_bottom' /> */}
+        <div className='big_bottom' />
       </div>
     </main>
   </>
