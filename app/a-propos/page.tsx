@@ -47,12 +47,12 @@ export default async function About() {
 
         <div className='big_bottom' />
 
-        <OnScroll className='grid grid--thick_guttered'>
-          {/* <div className='col col--12of12'
+      <OnScroll className='grid grid--thick_guttered'>
+          <div className='col col--12of12'
             data-parallax="1.5"
           >
             <LE c={about} k='categoriesTitle' />
-          </div> */}
+          </div>
           {about.fields.categories.map((category: any, index: number)=> <div key={category.sys.id} className='col col--4of12 col--tablet_landscape--4of12 col--tablet_portrait--6of12 col--phone--12of12'
             data-parallax="1.5"
           >
