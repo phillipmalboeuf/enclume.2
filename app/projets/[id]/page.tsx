@@ -53,11 +53,8 @@ export default async function Projet({
           overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
         */}
         <OnScroll className='padded big_bottom max_width max_width--center max_width--wide'>
-          <div
-            className='fixed_ratio_img'
-            style={{ maxHeight: '55vh', overflow: 'hidden' }}
-          >
-            <LPE c={project} k={'hero'} />
+          <div style={{ height: '55vh', overflow: 'hidden', position: 'relative' }}>
+            <LPE c={project} k={'hero'} imgStyle={{ objectFit: 'cover', width: '100%', height: '100%' }} />
           </div>
         </OnScroll>
 
