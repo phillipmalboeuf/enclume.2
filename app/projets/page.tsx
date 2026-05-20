@@ -3,7 +3,7 @@ import { LE, LPE } from '@/components/entry'
 import { PageTransition } from '@/components/page_transition'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
 
 export async function generateMetadata(
@@ -11,7 +11,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const [about] = await Promise.all([
     ContentService.aboutPage(),
-    // ContentService.projects()
   ])
   const search = await searchParams
   let current_category = about.fields.categories.find((category: any) => category.fields.key === search.category)
@@ -44,22 +43,44 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
 
-          {/* LEFT NAV COLUMN — sticky on desktop, normal on tablet/mobile */}
-          <div
-            className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'
-            style={{
-              position: 'sticky',
-              top: '2rem',
-              alignSelf: 'flex-start',
-              height: 'fit-content',
-            }}
-          >
-            <nav className='grid grid--tight_guttered grid--column'>
+          {/* LEFT NAV COLUMN — hidden from flow on desktop, shown normally on tablet/mobile */}
+          <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
+
+            {/* Fixed nav: only visible on desktop. Uses inline style to pin position. */}
+            <nav
+              className='grid grid--tight_guttered grid--column'
+              style={{
+                position: 'fixed',
+                top: '2rem',
+                left: 'var(--nav-left, 2rem)',
+                zIndex: 10,
+              }}
+            >
+              {/* Hide on tablet portrait and below via a wrapping class */}
+              <div className='hide--tablet_portrait'>
+                <OnScroll className='col col--tablet_portrait--12of12'>
+                  <Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link>
+                </OnScroll>
+                {about.fields.categories.map((category: any) => (
+                  <OnScroll className='col' key={category.fields.title}>
+                    <Link
+                      className={`header__link${current_category === category.fields.key ? ' active' : ''}`}
+                      href={`/projets?category=${category.fields.key}`}
+                    >
+                      <LE c={category} k='title' />
+                    </Link>
+                  </OnScroll>
+                ))}
+              </div>
+            </nav>
+
+            {/* Mobile/tablet nav: normal flow, only visible on tablet portrait and below */}
+            <nav className='grid grid--tight_guttered grid--column show--tablet_portrait'>
               <OnScroll className='col col--tablet_portrait--12of12'>
                 <Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link>
               </OnScroll>
               {about.fields.categories.map((category: any) => (
-                <OnScroll className='col' key={category.fields.title}>
+                <OnScroll className='col' key={`mobile-${category.fields.title}`}>
                   <Link
                     className={`header__link${current_category === category.fields.key ? ' active' : ''}`}
                     href={`/projets?category=${category.fields.key}`}
@@ -69,6 +90,7 @@ export default async function Projets({
                 </OnScroll>
               ))}
             </nav>
+
           </div>
 
           {/* RIGHT PROJECTS COLUMN */}
