@@ -1,4 +1,3 @@
-
 import { FunctionComponent } from 'react'
 
 interface Props {
@@ -6,28 +5,34 @@ interface Props {
 }
 
 export const Icon: FunctionComponent<Props> = (props) => {
-  return <svg className={`icon icon--${props.i}`} preserveAspectRatio={(props.i === 'anvil_engagements_green' || props.i === 'anvil_hero') ? 'xMidYMin slice' : 'none'} viewBox={({
-        logo: '0 0 810 220',
-        divet: '0 0 12 8',
-				arrow: '0 0 17 12',
-				plus: '0 0 20 20',
-				checkmark: '0 0 14.5 14.5',
-				anvil_orange: '0 0 1550.23 1244.31',
-				anvil_orange_long: '0 0 1919.9 3574.16',
-				anvil_blue: '0 0 1920.16 1546.92',
-				anvil_green: '0 0 1920.01 2214',
-				anvil_hero: '0 0 1781.82 841.04',
-				anvil_homepage: '0 0 1920.41 13356.02',
-				anvil_homepage_blue: '0 0 1440 1033',
-				anvil_project_green: '0 0 1920.88 12797.95',
-				anvil_project_red: '0 0 1921.07 13488.89',
-				anvil_project_beige: '0 0 1920.86 13456.41',
-				anvil_engagements_green: '0 0 1440 1259',
-				anvil_transition_red: '0 0 1918.01 1441.39',
-				anvil_transition_green: '0 0 1920.01 2214',
-				anvil_transition_orange: '0 0 1919.58 1464.95',
-				anvil_404: '0 0 1920 4221.9'
-      } as any)[props.i] || '0 0 512 512'}>
+  const isTransition = props.i.startsWith('anvil_transition')
+
+  return <svg
+    className={`icon icon--${props.i}`}
+    preserveAspectRatio={(props.i === 'anvil_engagements_green' || props.i === 'anvil_hero') ? 'xMidYMin slice' : 'none'}
+    style={isTransition ? { overflow: 'hidden', maxWidth: '100vw', display: 'block' } : undefined}
+    viewBox={({
+      logo: '0 0 810 220',
+      divet: '0 0 12 8',
+      arrow: '0 0 17 12',
+      plus: '0 0 20 20',
+      checkmark: '0 0 14.5 14.5',
+      anvil_orange: '0 0 1550.23 1244.31',
+      anvil_orange_long: '0 0 1919.9 3574.16',
+      anvil_blue: '0 0 1920.16 1546.92',
+      anvil_green: '0 0 1920.01 2214',
+      anvil_hero: '0 0 1781.82 841.04',
+      anvil_homepage: '0 0 1920.41 13356.02',
+      anvil_homepage_blue: '0 0 1440 1033',
+      anvil_project_green: '0 0 1920.88 12797.95',
+      anvil_project_red: '0 0 1921.07 13488.89',
+      anvil_project_beige: '0 0 1920.86 13456.41',
+      anvil_engagements_green: '0 0 1440 1259',
+      anvil_transition_red: '0 0 1918.01 1441.39',
+      anvil_transition_green: '0 0 1920.01 2214',
+      anvil_transition_orange: '0 0 1919.58 1464.95',
+      anvil_404: '0 0 1920 4221.9'
+    } as any)[props.i] || '0 0 512 512'}>
     {({
       logo: <><path d="M110.5,126.38c-3.91,23.71-24.4,39.13-53.18,39.13C23.02,165.52,0,138.12,0,104.97C0,70.9,21.18,45.81,55.25,45.81
 			c33.84,0,54.1,23.48,54.1,54.33c0,2.53-0.23,6.45-0.46,8.06h-90.7c1.38,23.94,17.27,40.98,39.13,40.98
@@ -96,15 +101,9 @@ export const Icon: FunctionComponent<Props> = (props) => {
 <path fill="#B1DEDF" d="M1313.81,8148.84L1313.81,8148.84c-69.4-11.03-133.27-45.12-180.2-97.42
 	c-99.94-111.37-160.72-309.47-167.97-569.06l-965.23,0.56v669.75h0v1103.69h1920V8152.67h-558.1
 	C1346.07,8152.67,1329.85,8151.39,1313.81,8148.84z"/>
-{/* <path fill="#274569" d="M1.41,11113.86h1551.83v-453.21l-86.27-8.71c-253.95-45.87-411.66-269.68-411.66-603.36v-24.05
-	c0-131.6,21.16-310.86,120.9-441.36c76.08-99.54,197.87-170.71,390.89-170.71h352.31v-673.61H1.41V11113.86z"/> */}
 <path fill="#B1DEDF" d="M0,1792.71l1521.17-0.2V483.86l-73.59-7.43C1240.83,439.09,1108.96,263.4,1097.36,0L0,0.41V1792.71z"/>
-{/* <polyline fill="#274569" points="1.4,1516.25 1.4,1807.73 1.66,1857.75 1082.22,2603.5 1919.41,2603.5 1919.41,1162.11 
-	1239.73,1162.11 1239.73,1516.24 "/> */}
 <polyline fill="#BDDEBE" points="1.4,11979.39 1.4,12270.87 1.66,12320.89 1082.22,13066.63 1919.41,13066.63 1919.41,11625.25 
 	1239.73,11625.25 1239.73,11979.38 "/>
-{/* <path fill="#98223B" d="M1920.13,4769.95H938.11c-22.88,505.7-233.38,878.38-569.52,1057.42v-0.19c-31.8,16.83-64.7,31.97-98.69,45.29
-	c-72.72,36.76-163.85,57.9-269.35,67.86v7.14v864.44h1919.58V4769.95z"/> */}
 <rect x="1083.25" y="13044.58" fill="#A8E2B8" width="836.16" height="311.44"/>
 			</>,
 			anvil_homepage_blue: <>
