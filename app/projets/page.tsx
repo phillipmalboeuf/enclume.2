@@ -33,6 +33,34 @@ export default async function Projets({
 
   return <>
     <PageTransition />
+
+    {/*
+      DESKTOP FIXED NAV
+      - Only visible on desktop (hidden on tablet portrait and below via CSS)
+      - position: fixed so it ignores will-change and position:relative on parents
+      - top: matches padded--big_top (adjust the value to match your actual top padding)
+      - left: matches your page left padding (adjust to match your actual .padded left padding)
+      - width: matches col--2of12 width at your breakpoint
+      - The inline style overrides the a { position: relative } issue entirely
+    */}
+    <style>{`
+      .projets-fixed-nav {
+        position: fixed;
+        top: var(--big-top-padding, 8rem);
+        left: var(--page-padding, 2rem);
+        width: calc(2 / 12 * (100vw - 4rem));
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      @media (max-width: 1024px) {
+        .projets-fixed-nav {
+          display: none;
+        }
+      }
+    `}</style>
+
     <main className={`${current_category ? ({
       0: 'light_green_back',
       1: 'red_back',
@@ -43,53 +71,45 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
 
-          {/* LEFT NAV COLUMN — hidden from flow on desktop, shown normally on tablet/mobile */}
+          {/* LEFT COLUMN — on desktop this is just a spacer, the real nav is fixed above */}
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
 
-            {/* Fixed nav: only visible on desktop. Uses inline style to pin position. */}
-            <nav
-              className='grid grid--tight_guttered grid--column'
-              style={{
-                position: 'fixed',
-                top: '2rem',
-                left: 'var(--nav-left, 2rem)',
-                zIndex: 10,
-              }}
+            {/*
+              MOBILE / TABLET NAV — normal flow, hidden on desktop
+              On tablet portrait: links wrap side by side in max 2 rows (flex-wrap)
+            */}
+            <nav style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.5rem',
+            }}
+              className='projets-mobile-nav'
             >
-              {/* Hide on tablet portrait and below via a wrapping class */}
-              <div className='hide--tablet_portrait'>
-                <OnScroll className='col col--tablet_portrait--12of12'>
-                  <Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link>
-                </OnScroll>
-                {about.fields.categories.map((category: any) => (
-                  <OnScroll className='col' key={category.fields.title}>
-                    <Link
-                      className={`header__link${current_category === category.fields.key ? ' active' : ''}`}
-                      href={`/projets?category=${category.fields.key}`}
-                    >
-                      <LE c={category} k='title' />
-                    </Link>
-                  </OnScroll>
-                ))}
-              </div>
-            </nav>
-
-            {/* Mobile/tablet nav: normal flow, only visible on tablet portrait and below */}
-            <nav className='grid grid--tight_guttered grid--column show--tablet_portrait'>
-              <OnScroll className='col col--tablet_portrait--12of12'>
-                <Link className={`header__link${current_category ? '' : ' active'}`} href='/projets'>Tous</Link>
-              </OnScroll>
+              <Link
+                className={`header__link${current_category ? '' : ' active'}`}
+                href='/projets'
+              >
+                Tous
+              </Link>
               {about.fields.categories.map((category: any) => (
-                <OnScroll className='col' key={`mobile-${category.fields.title}`}>
-                  <Link
-                    className={`header__link${current_category === category.fields.key ? ' active' : ''}`}
-                    href={`/projets?category=${category.fields.key}`}
-                  >
-                    <LE c={category} k='title' />
-                  </Link>
-                </OnScroll>
+                <Link
+                  key={category.fields.title}
+                  className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
+                  href={`/projets?category=${category.fields.key}`}
+                >
+                  <LE c={category} k='title' />
+                </Link>
               ))}
             </nav>
+
+            <style>{`
+              /* Desktop: hide the mobile nav */
+              @media (min-width: 1025px) {
+                .projets-mobile-nav {
+                  display: none;
+                }
+              }
+            `}</style>
 
           </div>
 
@@ -122,5 +142,24 @@ export default async function Projets({
         <div className='medium_bottom' />
       </div>
     </main>
+
+    {/* DESKTOP FIXED NAV — rendered outside main so no parent transforms affect it */}
+    <nav className='projets-fixed-nav'>
+      <Link
+        className={`header__link${current_category ? '' : ' active'}`}
+        href='/projets'
+      >
+        Tous
+      </Link>
+      {about.fields.categories.map((category: any) => (
+        <Link
+          key={category.fields.title}
+          className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
+          href={`/projets?category=${category.fields.key}`}
+        >
+          <LE c={category} k='title' />
+        </Link>
+      ))}
+    </nav>
   </>
 }
