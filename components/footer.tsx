@@ -17,35 +17,32 @@ export class Footer extends React.Component<Props, State> {
   render() {
     return <>
       <style>{`
-        /* Chantier ES logo column */
-        .footer-chantier {
-          display: flex;
-          align-items: flex-end;
-          justify-content: flex-end;
-        }
         .footer-chantier img {
           width: 60px;
           height: 60px;
           object-fit: contain;
+          display: block;
         }
-
-        /* On mobile: hide from social column, show aligned right on email row */
         .footer-chantier--desktop {
           display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
         }
         .footer-chantier--mobile {
           display: none;
         }
-
         @media (max-width: 768px) {
           .footer-chantier--desktop {
-            display: none;
+            display: none !important;
           }
           .footer-chantier--mobile {
             display: flex;
             justify-content: flex-end;
+          }
+          .footer-email-row {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin-left: auto;
           }
         }
       `}</style>
@@ -61,14 +58,13 @@ export class Footer extends React.Component<Props, State> {
           <div className='grid grid--thick_guttered'>
             <div className='col col--tablet_portrait--12of12 hide_on_phone' />
             <div className='col'>
-              <a href='tel:514-756-4113' target='_blank'>514-756-4113</a><br />
+              <a href='tel:514-756-4113' target='_blank'>514-756-4113</a>
             </div>
-            <div className='col'>
+            <div className='col footer-email-row'>
               <a href='mailto:info@enclume.ca' target='_blank'>info@enclume.ca</a>
-              {/* Mobile: logo appears right-aligned on same row as email */}
-              <span className='footer-chantier--mobile'>
-                <img src='/chantier-es.png' alt='Chantier de l'économie sociale' />
-              </span>
+              <div className='footer-chantier--mobile'>
+                <img src='/chantier-es.png' alt='Chantier de économie sociale' />
+              </div>
             </div>
           </div>
 
@@ -84,9 +80,8 @@ export class Footer extends React.Component<Props, State> {
               <a href='https://instagram.com/Enclume_atelier' target='_blank'>Instagram</a><br />
               <a href="https://www.linkedin.com/company/l'enclume---atelier-de-d-veloppement-territorial/" target='_blank'>LinkedIn</a>
             </div>
-            {/* Desktop/tablet: logo in its own column to the right of social links */}
             <div className='col footer-chantier--desktop'>
-              <img src='/chantier-es.png' alt='Chantier de l'économie sociale' />
+              <img src='/chantier-es.png' alt='Chantier de économie sociale' />
             </div>
           </div>
 
