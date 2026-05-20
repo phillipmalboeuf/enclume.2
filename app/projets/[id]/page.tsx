@@ -60,10 +60,10 @@ export default async function Projet({
           <LPE c={project} k={'hero'} />
         </div>
 
-        <div className='padded' style={{ paddingTop: '2rem' }}>
-          <div className='grid grid--guttered'>
+        <div style={{ marginTop: '2rem' }}>
+          <div className='grid grid--guttered padded'>
             <div className='col col--6of12 col--tablet_portrait--12of12'>
-              <h1 data-parallax="1.5">
+              <h1 style={{ margin: 0 }}>
                 <LE c={project} k={'title'} />
               </h1>
             </div>
