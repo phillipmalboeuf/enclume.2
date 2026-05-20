@@ -110,16 +110,13 @@ export default async function Projet({
 
     {/*
       PREV / NEXT NAVIGATION
-      Removed light_green_back and blue_back.
-      Now plain white background with a border to separate them.
       overflow:hidden on the wrapper prevents lateral scroll.
     */}
-    <div className='grid' style={{ overflow: 'hidden', borderTop: '1px solid #e0e0e0' }}>
+    <div className='grid' >
       {previous && (
         <Link
           href={`/projets/${previous.fields.url}`}
-          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle padded'
-          style={{ borderRight: '1px solid #e0e0e0' }}
+          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle light_green_back padded'
         >
           <span
             className='big padded padded--flat_top padded--flat_bottom'
@@ -131,7 +128,7 @@ export default async function Projet({
       {next && (
         <Link
           href={`/projets/${next.fields.url}`}
-          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle padded'
+          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle blue_back padded'
         >
           <h3 className='flat_bottom'><LE c={next} k={'title'} /></h3>
           <span
