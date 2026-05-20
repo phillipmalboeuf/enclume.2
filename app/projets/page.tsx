@@ -21,21 +21,15 @@ export async function generateMetadata(
 }
 
 /*
-  COLOR MAP — each category key gets its own text color.
-  These match the background colors used on each filtered page:
-    horizontalite → deep turquoise  (matches teal_back family)
-    curiosite     → light blue
-    integrite     → dark blue
-    audace        → red-ish
-    engagement    → light green
-  Adjust any hex below if you want to tweak a shade.
+  Color for ALL nav links depending on which filter is active.
+  When no filter (Tous), all links are black.
 */
-const CATEGORY_COLORS: Record<string, string> = {
-  horizontalite: '#205a65', // deep turquoise
-  curiosite:     '#badddf', // light blue
-  integrite:     '#274569', // dark blue
-  audace:        '#3d2c3d', // red-ish (deep plum)
-  engagement:    '#b4e0bb', // light green
+const FILTER_COLOR: Record<string, string> = {
+  horizontalite: '#205a65',
+  curiosite:     '#badddf',
+  integrite:     '#274569',
+  audace:        '#3d2c3d',
+  engagement:    '#b4e0bb',
 }
 
 export default async function Projets({
@@ -49,22 +43,26 @@ export default async function Projets({
   let current_category = about.fields.categories.find((category: any) => category.fields.key === search.category)
   let current_category_index = about.fields.categories.findIndex((category: any) => category.fields.key === search.category)
 
+  // All nav links share this one color based on the active filter
+  const navColor = current_category ? (FILTER_COLOR[current_category.fields.key] ?? '#111') : '#111'
+
   return <>
     <PageTransition />
 
     <style>{`
-      /* ── ACTIVE STATE: underline only, no color override ──────────── */
+      /* All nav links: same size as project titles (.slight p), underline on active only */
       .projets-nav .header__link {
         border-bottom: none !important;
         text-decoration: none !important;
+        font-size: 1.25rem !important;
+        line-height: 1.5006002401rem !important;
       }
       .projets-nav .header__link.active {
         border-bottom: none !important;
         text-decoration: underline !important;
       }
 
-      /* ── DESKTOP + TABLET FIXED NAV ──────────────────────────────────
-         Adjust top and left to match your .padded and .padded--big_top values */
+      /* DESKTOP + TABLET fixed nav */
       .projets-fixed-nav {
         position: fixed;
         top: var(--big-top-padding, 8rem);
@@ -76,9 +74,7 @@ export default async function Projets({
         gap: 0.25rem;
       }
 
-      /* ── MOBILE NAV ──────────────────────────────────────────────────
-         Hidden by default, shown only below 768px.
-         Tous on its own row, then categories wrap side by side. */
+      /* MOBILE nav — hidden by default */
       .projets-mobile-nav {
         display: none;
       }
@@ -88,10 +84,7 @@ export default async function Projets({
         gap: 0.5rem;
       }
 
-      /* ── BREAKPOINTS ─────────────────────────────────────────────────
-         <= 768px  : mobile nav visible, fixed nav hidden
-         >= 769px  : fixed nav visible (desktop + tablet), mobile nav hidden
-         On tablet landscape the fixed nav uses the 3-of-12 column width  */
+      /* <= 768px : mobile nav, no fixed nav */
       @media (max-width: 768px) {
         .projets-fixed-nav {
           display: none !important;
@@ -103,6 +96,8 @@ export default async function Projets({
           margin-bottom: 2rem;
         }
       }
+
+      /* >= 769px : fixed nav, no mobile nav */
       @media (min-width: 769px) {
         .projets-mobile-nav {
           display: none !important;
@@ -126,23 +121,22 @@ export default async function Projets({
           {/* LEFT COLUMN — spacer on desktop/tablet, holds mobile nav on mobile */}
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
 
-            {/* MOBILE ONLY NAV */}
-            <nav className='projets-nav projets-mobile-nav'>
-              {/* Row 1: Tous alone, inherits default text color */}
+            {/* MOBILE ONLY NAV — all links share navColor */}
+            <nav className='projets-nav projets-mobile-nav' style={{ color: navColor }}>
               <Link
                 className={`header__link${current_category ? '' : ' active'}`}
                 href='/projets'
+                style={{ color: navColor }}
               >
                 Tous
               </Link>
-              {/* Row 2+: categories side by side, each with its own color */}
               <div className='projets-mobile-nav-categories'>
                 {about.fields.categories.map((category: any) => (
                   <Link
                     key={category.fields.title}
                     className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
                     href={`/projets?category=${category.fields.key}`}
-                    style={{ color: CATEGORY_COLORS[category.fields.key] ?? 'inherit' }}
+                    style={{ color: navColor }}
                   >
                     <LE c={category} k='title' />
                   </Link>
@@ -182,24 +176,21 @@ export default async function Projets({
       </div>
     </main>
 
-    {/* DESKTOP + TABLET FIXED NAV
-        Outside <main> so no parent transform or position:relative can break position:fixed */}
-    <nav className='projets-nav projets-fixed-nav'>
-      {/* Tous — no special color */}
+    {/* DESKTOP + TABLET FIXED NAV — outside <main>, immune to any parent transforms */}
+    <nav className='projets-nav projets-fixed-nav' style={{ color: navColor }}>
       <Link
         className={`header__link${current_category ? '' : ' active'}`}
         href='/projets'
+        style={{ color: navColor }}
       >
         Tous
       </Link>
-      {/* Each category link gets its own persistent color via inline style.
-          The .active class only adds underline — color is never overridden. */}
       {about.fields.categories.map((category: any) => (
         <Link
           key={category.fields.title}
           className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
           href={`/projets?category=${category.fields.key}`}
-          style={{ color: CATEGORY_COLORS[category.fields.key] ?? 'inherit' }}
+          style={{ color: navColor }}
         >
           <LE c={category} k='title' />
         </Link>
