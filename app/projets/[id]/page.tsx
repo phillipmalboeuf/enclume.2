@@ -1,12 +1,10 @@
 import { OnScroll } from '@/components/animations'
 import { LE, LPE, LRE } from '@/components/entry'
-import { Icon } from '@/components/icon'
 import { PageTransition } from '@/components/page_transition'
 import { Picture } from '@/components/picture'
 import { ContentService } from '@/services/content'
 import Link from 'next/link'
-
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
 
 export async function generateMetadata(
@@ -14,7 +12,6 @@ export async function generateMetadata(
   searchParams
 ): Promise<Metadata> {
   const project = await ContentService.project({ 'fields.url': params.params.id })
-
   return {
     title: project.fields.title,
     description: documentToPlainTextString(project.fields.description),
@@ -41,27 +38,47 @@ export default async function Projet({
   return <>
     <PageTransition />
     <main className='relative' role='main'>
-      {({
-        planning: <Icon i='anvil_project_green' />,
-        participation: <Icon i='anvil_project_red' />,
-        research: <Icon i='anvil_project_beige' />
-      } as any)[project.fields.category && project.fields.category.fields.key]}
+
+      {/*
+        REMOVED: <Icon> background shapes (anvil_project_green/red/beige)
+        These were the colored backgrounds. Now white only.
+      */}
 
       <div className='padded padded--big_top'>
+
+        {/*
+          HERO IMAGE
+          Constrained to 75vh so the title is always visible on full screen.
+          max_width--wide keeps it from going edge to edge.
+          overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
+        */}
         <OnScroll className='padded big_bottom max_width max_width--center max_width--wide'>
-          <div className='fixed_ratio_img'><LPE c={project} k={'hero'} /></div>
+          <div
+            className='fixed_ratio_img'
+            style={{ maxHeight: '75vh', overflow: 'hidden' }}
+          >
+            <LPE c={project} k={'hero'} />
+          </div>
         </OnScroll>
 
-        <h1
-          data-parallax="1.5"
-        ><OnScroll><LE c={project} k={'title'} /></OnScroll></h1>
+        <h1 data-parallax="1.5">
+          <OnScroll><LE c={project} k={'title'} /></OnScroll>
+        </h1>
 
         <div
           data-parallax="1.5"
-          className='grid grid--thick_guttered grid--spaced_around'>
+          className='grid grid--thick_guttered grid--spaced_around'
+        >
           <div className='col col--6of12 col--tablet_portrait--12of12 medium_bottom'>
-            {project.fields.subTitle && <OnScroll><hr /><p className='slight'><LE c={project} k='subTitle' /></p></OnScroll>}
-            {project.fields.table && <OnScroll><LRE c={project} k={'table'} /></OnScroll>}
+            {project.fields.subTitle && (
+              <OnScroll>
+                <hr />
+                <p className='slight'><LE c={project} k='subTitle' /></p>
+              </OnScroll>
+            )}
+            {project.fields.table && (
+              <OnScroll><LRE c={project} k={'table'} /></OnScroll>
+            )}
           </div>
           <div className='col col--6of12 col--tablet_portrait--12of12 medium_bottom'>
             <OnScroll><LRE c={project} k={'description'} /></OnScroll>
@@ -70,27 +87,59 @@ export default async function Projet({
 
         <div
           data-parallax="2"
-          className='grid grid--thick_guttered grid--spaced_around grid--middle'>
-          {project.fields.gallery?.map((photo: any, index: number)=> <OnScroll key={photo.fields.file.url} className={`col col--${project.fields.galleryGridSizes && project.fields.galleryGridSizes[index]}of12 col--tablet_portrait--12of12`}>
-            <figure>
-              <Picture src={photo.fields.file.url} />
-              {photo.fields.description && <figcaption><small>{photo.fields.description}</small></figcaption>}
-            </figure>
-
-            <div className='normal_bottom hide_on_tablet_portrait' />
-          </OnScroll>)}
+          className='grid grid--thick_guttered grid--spaced_around grid--middle'
+        >
+          {project.fields.gallery?.map((photo: any, index: number) => (
+            <OnScroll
+              key={photo.fields.file.url}
+              className={`col col--${project.fields.galleryGridSizes && project.fields.galleryGridSizes[index]}of12 col--tablet_portrait--12of12`}
+            >
+              <figure>
+                <Picture src={photo.fields.file.url} />
+                {photo.fields.description && (
+                  <figcaption><small>{photo.fields.description}</small></figcaption>
+                )}
+              </figure>
+              <div className='normal_bottom hide_on_tablet_portrait' />
+            </OnScroll>
+          ))}
         </div>
+
       </div>
     </main>
-    <div className='grid'>
-      {previous && <Link href={`/projets/${previous.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle light_green_back padded'>
-        <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(90deg)' }}>↓</span>
-        <h3 className='flat_bottom'><LE c={previous} k={'title'} /></h3>
-      </Link>}
-      {next && <Link href={`/projets/${next.fields.url}`} className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle blue_back padded'>
-        <h3 className='flat_bottom'><LE c={next} k={'title'} /></h3>
-        <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(-90deg)' }}>↓</span>
-      </Link>}
+
+    {/*
+      PREV / NEXT NAVIGATION
+      Removed light_green_back and blue_back.
+      Now plain white background with a border to separate them.
+      overflow:hidden on the wrapper prevents lateral scroll.
+    */}
+    <div className='grid' style={{ overflow: 'hidden', borderTop: '1px solid #e0e0e0' }}>
+      {previous && (
+        <Link
+          href={`/projets/${previous.fields.url}`}
+          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle padded'
+          style={{ borderRight: '1px solid #e0e0e0' }}
+        >
+          <span
+            className='big padded padded--flat_top padded--flat_bottom'
+            style={{ transform: 'rotate(90deg)' }}
+          >↓</span>
+          <h3 className='flat_bottom'><LE c={previous} k={'title'} /></h3>
+        </Link>
+      )}
+      {next && (
+        <Link
+          href={`/projets/${next.fields.url}`}
+          className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle padded'
+        >
+          <h3 className='flat_bottom'><LE c={next} k={'title'} /></h3>
+          <span
+            className='big padded padded--flat_top padded--flat_bottom'
+            style={{ transform: 'rotate(-90deg)' }}
+          >↓</span>
+        </Link>
+      )}
     </div>
   </>
 }
