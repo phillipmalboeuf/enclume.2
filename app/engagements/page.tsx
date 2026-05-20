@@ -25,10 +25,8 @@ export default async function About() {
     <PageTransition />
     <main className='' role='main'>
 
-      {/* Background shape — overflow hidden fixes the right side gap */}
-      <div style={{ overflow: 'hidden', position: 'relative' }}>
-        <Icon i='anvil_engagements_green' />
-      </div>
+      {/* Background shape — exactly as original */}
+      <Icon i='anvil_engagements_green' />
 
       <div className='padded padded--big_top'>
 
