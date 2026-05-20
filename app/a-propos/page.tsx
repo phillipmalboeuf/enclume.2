@@ -27,9 +27,6 @@ export default async function About() {
 
       <div className='padded padded--big_top'>
         <OnScroll className='grid medium_bottom'>
-          {about.fields.introTitle && <div className='col col--12of12'>
-            <LE c={about} k='introTitle' />
-          </div>}
           <h2 className='col col--7of12 col--tablet_portrait--9of12 col--phone--12of12'>
             <LE c={about} k='intro' />
           </h2>
