@@ -34,16 +34,26 @@ export default async function Projets({
   return <>
     <PageTransition />
 
-    {/*
-      DESKTOP FIXED NAV
-      - Only visible on desktop (hidden on tablet portrait and below via CSS)
-      - position: fixed so it ignores will-change and position:relative on parents
-      - top: matches padded--big_top (adjust the value to match your actual top padding)
-      - left: matches your page left padding (adjust to match your actual .padded left padding)
-      - width: matches col--2of12 width at your breakpoint
-      - The inline style overrides the a { position: relative } issue entirely
-    */}
     <style>{`
+      /* ── SHARED ACTIVE STATE ───────────────────────────────────────
+         Override whatever .header__link.active was doing before.
+         We ONLY add an underline. No color change, no border-bottom line. */
+      .projets-nav .header__link {
+        color: inherit !important;
+        border-bottom: none !important;
+        text-decoration: none;
+      }
+      .projets-nav .header__link.active {
+        color: inherit !important;
+        text-decoration: underline !important;
+        border-bottom: none !important;
+      }
+
+      /* ── DESKTOP + TABLET FIXED NAV ────────────────────────────────
+         Visible on tablet landscape and above.
+         Position matches the original left column location:
+         - top: adjust to match your padded--big_top value
+         - left: adjust to match your .padded left padding */
       .projets-fixed-nav {
         position: fixed;
         top: var(--big-top-padding, 8rem);
@@ -54,9 +64,42 @@ export default async function Projets({
         flex-direction: column;
         gap: 0.25rem;
       }
-      @media (max-width: 1024px) {
+
+      /* ── MOBILE NAV ─────────────────────────────────────────────────
+         Only visible on mobile (tablet portrait and below).
+         "Tous" is alone on row 1.
+         All categories wrap across the following rows side by side. */
+      .projets-mobile-nav {
+        display: none;
+      }
+      .projets-mobile-nav-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      /* ── BREAKPOINTS ────────────────────────────────────────────────
+         tablet portrait = max 768px  → show mobile nav, hide fixed nav
+         tablet landscape = 769px+    → show fixed nav, hide mobile nav
+         Adjust these breakpoints if your grid uses different values   */
+      @media (max-width: 768px) {
         .projets-fixed-nav {
-          display: none;
+          display: none !important;
+        }
+        .projets-mobile-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-bottom: 2rem;
+        }
+      }
+      @media (min-width: 769px) {
+        .projets-mobile-nav {
+          display: none !important;
+        }
+        /* On tablet landscape the fixed nav is narrower, widen its column */
+        .projets-fixed-nav {
+          width: calc(3 / 12 * (100vw - 4rem));
         }
       }
     `}</style>
@@ -71,45 +114,31 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
 
-          {/* LEFT COLUMN — on desktop this is just a spacer, the real nav is fixed above */}
+          {/* LEFT COLUMN — pure spacer on desktop/tablet, holds mobile nav on mobile */}
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
 
-            {/*
-              MOBILE / TABLET NAV — normal flow, hidden on desktop
-              On tablet portrait: links wrap side by side in max 2 rows (flex-wrap)
-            */}
-            <nav style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.5rem',
-            }}
-              className='projets-mobile-nav'
-            >
+            {/* MOBILE ONLY NAV */}
+            <nav className='projets-nav projets-mobile-nav'>
+              {/* Row 1: Tous alone */}
               <Link
                 className={`header__link${current_category ? '' : ' active'}`}
                 href='/projets'
               >
                 Tous
               </Link>
-              {about.fields.categories.map((category: any) => (
-                <Link
-                  key={category.fields.title}
-                  className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
-                  href={`/projets?category=${category.fields.key}`}
-                >
-                  <LE c={category} k='title' />
-                </Link>
-              ))}
+              {/* Row 2+: all categories side by side, wrapping */}
+              <div className='projets-mobile-nav-categories'>
+                {about.fields.categories.map((category: any) => (
+                  <Link
+                    key={category.fields.title}
+                    className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
+                    href={`/projets?category=${category.fields.key}`}
+                  >
+                    <LE c={category} k='title' />
+                  </Link>
+                ))}
+              </div>
             </nav>
-
-            <style>{`
-              /* Desktop: hide the mobile nav */
-              @media (min-width: 1025px) {
-                .projets-mobile-nav {
-                  display: none;
-                }
-              }
-            `}</style>
 
           </div>
 
@@ -143,8 +172,10 @@ export default async function Projets({
       </div>
     </main>
 
-    {/* DESKTOP FIXED NAV — rendered outside main so no parent transforms affect it */}
-    <nav className='projets-fixed-nav'>
+    {/* DESKTOP + TABLET FIXED NAV
+        Rendered outside <main> so zero parent transforms or position:relative
+        can interfere with position:fixed */}
+    <nav className='projets-nav projets-fixed-nav'>
       <Link
         className={`header__link${current_category ? '' : ' active'}`}
         href='/projets'
