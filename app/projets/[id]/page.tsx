@@ -53,26 +53,16 @@ export default async function Projet({
           overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
         */}
         <style>{`
-          .hero-wrapper,
-          .hero-wrapper img,
-          .hero-wrapper picture,
-          .hero-wrapper > div,
-          .hero-wrapper [class*="fixed_ratio"],
-          .hero-wrapper [style*="padding"] {
-            height: 55vh !important;
-            max-height: 55vh !important;
-            padding-bottom: 0 !important;
-            object-fit: cover !important;
-            overflow: hidden !important;
-            position: relative !important;
+          .hero-wrapper {
+            max-width: 65% !important;
+            margin: 0 auto !important;
           }
           .hero-wrapper img {
             width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
+            height: auto !important;
           }
         `}</style>
-        <OnScroll className='padded big_bottom max_width max_width--center max_width--wide'>
+        <OnScroll className='padded max_width max_width--center max_width--wide' style={{ marginBottom: '1rem' }}>
           <div className='hero-wrapper'>
             <LPE c={project} k={'hero'} />
           </div>
