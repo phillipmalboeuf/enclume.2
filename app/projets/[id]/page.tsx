@@ -54,7 +54,7 @@ export default async function Projet({
         */}
         <style>{`
           .hero-wrapper {
-            max-width: 65% !important;
+            max-width: 55% !important;
             margin: 0 auto !important;
           }
           .hero-wrapper img {
@@ -62,14 +62,15 @@ export default async function Projet({
             height: auto !important;
           }
         `}</style>
-        <OnScroll className='padded max_width max_width--center max_width--wide' style={{ marginBottom: '1rem' }}>
+        {/* Hero + title load immediately, no OnScroll */}
+        <div className='padded max_width max_width--center' style={{ marginBottom: '1rem' }}>
           <div className='hero-wrapper'>
             <LPE c={project} k={'hero'} />
           </div>
-        </OnScroll>
+        </div>
 
         <h1 data-parallax="1.5">
-          <OnScroll><LE c={project} k={'title'} /></OnScroll>
+          <LE c={project} k={'title'} />
         </h1>
 
         <div
