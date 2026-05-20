@@ -52,21 +52,9 @@ export default async function Projet({
           max_width--wide keeps it from going edge to edge.
           overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
         */}
-        <style>{`
-          .hero-wrapper {
-            max-width: 55% !important;
-            margin: 0 auto !important;
-          }
-          .hero-wrapper img {
-            width: 100% !important;
-            height: auto !important;
-          }
-        `}</style>
-        {/* Hero + title load immediately, no OnScroll */}
-        <div className='padded max_width max_width--center' style={{ marginBottom: '1rem' }}>
-          <div className='hero-wrapper'>
-            <LPE c={project} k={'hero'} />
-          </div>
+        {/* Hero — original ratio preserved, just scaled to 60% width */}
+        <div className='padded' style={{ marginBottom: '1rem', width: '60%', marginLeft: 'auto', marginRight: 'auto' }}>
+          <LPE c={project} k={'hero'} />
         </div>
 
         <h1 data-parallax="1.5">
