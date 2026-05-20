@@ -40,7 +40,7 @@ export default async function Projet({
     <main className='relative' role='main'>
 
       <style>{`
-        .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2rem; }
+        .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2,5rem; }
         @media (max-width: 768px) { .hero-image-wrapper { width: 100%; } }
       `}</style>
 
@@ -54,7 +54,7 @@ export default async function Projet({
         {/* TITLE — left column, aligned with content below, no parallax, no extra padding */}
         <div className='grid grid--guttered'>
           <div className='col col--6of12 col--tablet_portrait--12of12'>
-            <h1 style={{ margin: 0 }}>
+            <h1 style={{ margin: 0, marginBottom: '2rem' }}>
               <LE c={project} k={'title'} />
             </h1>
           </div>
