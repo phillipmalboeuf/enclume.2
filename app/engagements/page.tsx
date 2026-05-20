@@ -37,11 +37,10 @@ export default async function About() {
           </div>
         </OnScroll>
 
-        <div className='big_bottom' />
+        <div className='medium_bottom' />
 
         {/* Engagement items — col--3of12 keeps them narrow but in same grid positions */}
         <OnScroll className='grid grid--guttered'>
-          <div className='col col--12of12'></div>
           {engagements.fields.engagements.map((engagement: { fields: any }, i: number) => (
             <div
               key={i}
