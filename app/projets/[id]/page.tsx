@@ -40,7 +40,7 @@ export default async function Projet({
     <main className='relative' role='main'>
 
       <style>{`
-        .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2,5rem; }
+        .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2.5rem; }
         @media (max-width: 768px) { .hero-image-wrapper { width: 100%; } }
       `}</style>
 
