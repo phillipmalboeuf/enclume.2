@@ -27,8 +27,8 @@ export async function generateMetadata(
 const FILTER_COLOR: Record<string, string> = {
   horizontalite: '#205a65',
   curiosite:     '#badddf',
-  integrite:     '#274569',
-  audace:        '#3d2c3d',
+  integrite:     '#3a5233', // dark forest green
+  audace:        '#274569', // dark blue (was intégrité)
   engagement:    '#b4e0bb',
 }
 
