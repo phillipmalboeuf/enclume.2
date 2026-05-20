@@ -160,7 +160,7 @@ export default async function Projets({
                   <Link href={`/projets/${project.fields.url}`}>
                     <OnScroll>
                       {project.fields.hero && <div className='small_bottom'><LPE c={project} k='hero' /></div>}
-                      <p className='slight'>
+                      <p className='slight' style={{ color: navColor }}>
                         <LE c={project} k='title' /><br />
                         {project.fields.subTitle && <span className='a__hide'><LE c={project} k='subTitle' /></span>}
                       </p>
