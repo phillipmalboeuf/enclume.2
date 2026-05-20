@@ -52,9 +52,29 @@ export default async function Projet({
           max_width--wide keeps it from going edge to edge.
           overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
         */}
+        <style>{`
+          .hero-wrapper,
+          .hero-wrapper img,
+          .hero-wrapper picture,
+          .hero-wrapper > div,
+          .hero-wrapper [class*="fixed_ratio"],
+          .hero-wrapper [style*="padding"] {
+            height: 55vh !important;
+            max-height: 55vh !important;
+            padding-bottom: 0 !important;
+            object-fit: cover !important;
+            overflow: hidden !important;
+            position: relative !important;
+          }
+          .hero-wrapper img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+          }
+        `}</style>
         <OnScroll className='padded big_bottom max_width max_width--center max_width--wide'>
-          <div style={{ height: '55vh', overflow: 'hidden', position: 'relative' }}>
-            <LPE c={project} k={'hero'} imgStyle={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+          <div className='hero-wrapper'>
+            <LPE c={project} k={'hero'} />
           </div>
         </OnScroll>
 
