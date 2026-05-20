@@ -16,37 +16,6 @@ export class Footer extends React.Component<Props, State> {
 
   render() {
     return <>
-      <style>{`
-        .footer-chantier img {
-          width: 60px;
-          height: 60px;
-          object-fit: contain;
-          display: block;
-        }
-        .footer-chantier--desktop {
-          display: flex;
-          align-items: flex-end;
-          justify-content: flex-end;
-        }
-        .footer-chantier--mobile {
-          display: none;
-        }
-        @media (max-width: 768px) {
-          .footer-chantier--desktop {
-            display: none !important;
-          }
-          .footer-chantier--mobile {
-            display: flex;
-            justify-content: flex-end;
-          }
-          .footer-email-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-        }
-      `}</style>
-
       <footer>
         <div className='grid grid--spaced grid--middle'>
 
@@ -60,15 +29,12 @@ export class Footer extends React.Component<Props, State> {
             <div className='col'>
               <a href='tel:514-756-4113' target='_blank'>514-756-4113</a>
             </div>
-            <div className='col footer-email-row'>
+            <div className='col'>
               <a href='mailto:info@enclume.ca' target='_blank'>info@enclume.ca</a>
-              <div className='footer-chantier--mobile'>
-                <img src='/chantier-es.png' alt='Chantier de économie sociale' />
-              </div>
             </div>
           </div>
 
-          <div className='grid grid--thick_guttered'>
+          <div className='grid grid--thick_guttered grid--middle'>
             <div className='col'>
               <a href='https://goo.gl/maps/NpgUxc6ewHBePHk88' target='_blank'>4529 rue Clark,<br />
               Bureau #404<br />
@@ -80,8 +46,13 @@ export class Footer extends React.Component<Props, State> {
               <a href='https://instagram.com/Enclume_atelier' target='_blank'>Instagram</a><br />
               <a href="https://www.linkedin.com/company/l'enclume---atelier-de-d-veloppement-territorial/" target='_blank'>LinkedIn</a>
             </div>
-            <div className='col footer-chantier--desktop'>
-              <img src='/chantier-es.png' alt='Chantier de économie sociale' />
+            {/* Chantier ES logo — right column, fixed size */}
+            <div className='col' style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+              <img
+                src='/chantier-es.png'
+                alt='Chantier de économie sociale'
+                style={{ width: '50px', height: '50px', objectFit: 'contain', display: 'block' }}
+              />
             </div>
           </div>
 
