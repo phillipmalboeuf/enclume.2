@@ -53,7 +53,7 @@ export default async function Projet({
           overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
         */}
         {/* Hero — original ratio preserved, just scaled to 60% width */}
-        <div className='padded' style={{ marginBottom: '1rem', width: '60%', marginLeft: 'auto', marginRight: 'auto' }}>
+        <div className='padded' style={{ marginBottom: '1rem', width: '80%', marginLeft: 'auto', marginRight: 'auto' }}>
           <LPE c={project} k={'hero'} />
         </div>
 
