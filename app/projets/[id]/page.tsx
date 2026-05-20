@@ -39,41 +39,29 @@ export default async function Projet({
     <PageTransition />
     <main className='relative' role='main'>
 
-      {/*
-        REMOVED: <Icon> background shapes (anvil_project_green/red/beige)
-        These were the colored backgrounds. Now white only.
-      */}
+      <style>{`
+        .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2rem; }
+        @media (max-width: 768px) { .hero-image-wrapper { width: 100%; } }
+      `}</style>
 
       <div className='padded padded--big_top'>
 
-        {/*
-          HERO IMAGE
-          Constrained to 75vh so the title is always visible on full screen.
-          max_width--wide keeps it from going edge to edge.
-          overflow:hidden on the wrapper clips the fixed_ratio_img correctly.
-        */}
-        <style>{`
-          .hero-image-wrapper { width: 60%; margin-left: auto; margin-right: auto; }
-          @media (max-width: 768px) { .hero-image-wrapper { width: 100%; } }
-        `}</style>
+        {/* HERO — 60% centered desktop, 100% mobile, original ratio */}
         <div className='hero-image-wrapper'>
           <LPE c={project} k={'hero'} />
         </div>
 
-        <div style={{ marginTop: '2rem' }}>
-          <div className='grid grid--guttered padded'>
-            <div className='col col--6of12 col--tablet_portrait--12of12'>
-              <h1 style={{ margin: 0 }}>
-                <LE c={project} k={'title'} />
-              </h1>
-            </div>
+        {/* TITLE — left column, aligned with content below, no parallax, no extra padding */}
+        <div className='grid grid--guttered'>
+          <div className='col col--6of12 col--tablet_portrait--12of12'>
+            <h1 style={{ margin: 0 }}>
+              <LE c={project} k={'title'} />
+            </h1>
           </div>
         </div>
 
-        <div
-          data-parallax="1.5"
-          className='grid grid--thick_guttered grid--spaced_around'
-        >
+        {/* SUBTITLE + DESCRIPTION — no parallax so it never scrolls over title */}
+        <div className='grid grid--thick_guttered grid--spaced_around'>
           <div className='col col--6of12 col--tablet_portrait--12of12 medium_bottom'>
             {project.fields.subTitle && (
               <OnScroll>
@@ -90,10 +78,8 @@ export default async function Projet({
           </div>
         </div>
 
-        <div
-          data-parallax="2"
-          className='grid grid--thick_guttered grid--spaced_around grid--middle'
-        >
+        {/* GALLERY */}
+        <div className='grid grid--thick_guttered grid--spaced_around grid--middle'>
           {project.fields.gallery?.map((photo: any, index: number) => (
             <OnScroll
               key={photo.fields.file.url}
@@ -113,20 +99,14 @@ export default async function Projet({
       </div>
     </main>
 
-    {/*
-      PREV / NEXT NAVIGATION
-      overflow:hidden on the wrapper prevents lateral scroll.
-    */}
-    <div className='grid' >
+    {/* PREV / NEXT */}
+    <div className='grid'>
       {previous && (
         <Link
           href={`/projets/${previous.fields.url}`}
           className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle light_green_back padded'
         >
-          <span
-            className='big padded padded--flat_top padded--flat_bottom'
-            style={{ transform: 'rotate(90deg)' }}
-          >↓</span>
+          <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(90deg)' }}>↓</span>
           <h3 className='flat_bottom'><LE c={previous} k={'title'} /></h3>
         </Link>
       )}
@@ -136,10 +116,7 @@ export default async function Projet({
           className='col col--6of12 col--tablet_portrait--12of12 grid grid--spaced grid--nowrap grid--middle blue_back padded'
         >
           <h3 className='flat_bottom'><LE c={next} k={'title'} /></h3>
-          <span
-            className='big padded padded--flat_top padded--flat_bottom'
-            style={{ transform: 'rotate(-90deg)' }}
-          >↓</span>
+          <span className='big padded padded--flat_top padded--flat_bottom' style={{ transform: 'rotate(-90deg)' }}>↓</span>
         </Link>
       )}
     </div>
