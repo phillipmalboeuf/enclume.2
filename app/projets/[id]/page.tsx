@@ -55,7 +55,7 @@ export default async function Projet({
         <OnScroll className='padded big_bottom max_width max_width--center max_width--wide'>
           <div
             className='fixed_ratio_img'
-            style={{ maxHeight: '75vh', overflow: 'hidden' }}
+            style={{ maxHeight: '55vh', overflow: 'hidden' }}
           >
             <LPE c={project} k={'hero'} />
           </div>
