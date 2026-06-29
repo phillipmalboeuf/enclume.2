@@ -1,28 +1,24 @@
 'use client'
+
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
-export default function FilterNav({ categories, navColor }: { categories: any[], navColor: string }) {
+export default function FilterNav({ categories }: { categories: any[] }) {
   const searchParams = useSearchParams()
   const currentCategory = searchParams.get('category')
 
   return (
-    <nav style={{
-      position: 'fixed',
-      top: '8rem',
-      left: '2.5rem',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0.25rem',
-      zIndex: 9,
-      color: navColor,
-    }}>
+<nav style={{
+  position: 'fixed',
+  top: '8rem',
+  left: '2.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.25rem',
+  zIndex: 9
+}}>
       <div>
-        <Link
-          className={`header__link${!currentCategory ? ' active' : ''}`}
-          href='/projets'
-          style={{ color: navColor }}
-        >
+        <Link className={`header__link${!currentCategory ? ' active' : ''}`} href='/projets'>
           Tous
         </Link>
       </div>
@@ -31,7 +27,6 @@ export default function FilterNav({ categories, navColor }: { categories: any[],
           <Link
             className={`header__link${currentCategory === category.fields.key ? ' active' : ''}`}
             href={`/projets?category=${category.fields.key}`}
-            style={{ color: navColor }}
           >
             {category.fields.title}
           </Link>
