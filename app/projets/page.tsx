@@ -47,8 +47,8 @@ export default async function Projets({
       .projets-nav .header__link {
         border-bottom: none !important;
         text-decoration: none !important;
-        font-size: 1.25rem !important;
-        line-height: 1.5006002401rem !important;
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
       }
       .projets-nav .header__link.active {
         border-bottom: none !important;
@@ -58,7 +58,7 @@ export default async function Projets({
         position: fixed;
         top: var(--big-top-padding, 8rem);
         left: var(--page-padding, 2rem);
-        width: calc(2 / 12 * (100vw - 4rem));
+        width: calc(1.5 / 12 * (100vw - 4rem));
         z-index: 10;
         display: flex;
         flex-direction: column;
@@ -88,7 +88,7 @@ export default async function Projets({
           display: none !important;
         }
         .projets-fixed-nav {
-          width: calc(3 / 12 * (100vw - 4rem));
+          width: calc(1.5 / 12 * (100vw - 4rem));
         }
       }
     `}</style>
