@@ -14,7 +14,7 @@ export async function generateMetadata(
     ContentService.aboutPage(),
   ])
   const search = await searchParams
-  let current_category = about.fields.projectFilters.find((category: any) => category.fields.key === search.category)
+  let current_category = (about.fields as any).projectFilters.find((category: any) => category.fields.key === search.category)
   return {
     title: current_category ? current_category.fields.title : 'Projets',
     description: current_category && current_category.fields.description
@@ -27,7 +27,6 @@ const FILTER_COLOR: Record<string, string> = {
   integrite:     '#3a5233',
   audace:        '#274569',
   engagement:    '#b4e0bb',
-  // ajoute ici les nouveaux keys/couleurs
 }
 
 export default async function Projets({
@@ -38,8 +37,8 @@ export default async function Projets({
     ContentService.projects()
   ])
   const search = await searchParams
-  let current_category = about.fields.projectFilters.find((category: any) => category.fields.key === search.category)
-  let current_category_index = about.fields.projectFilters.findIndex((category: any) => category.fields.key === search.category)
+  let current_category = (about.fields as any).projectFilters.find((category: any) => category.fields.key === search.category)
+  let current_category_index = (about.fields as any).projectFilters.findIndex((category: any) => category.fields.key === search.category)
 
   const navColor = current_category ? (FILTER_COLOR[current_category.fields.key] ?? '#111') : '#111'
 
@@ -86,7 +85,6 @@ export default async function Projets({
         <div className='grid grid--guttered'>
 
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-            {/* MOBILE ONLY NAV */}
             <nav className='projets-nav projets-mobile-nav' style={{ color: navColor }}>
               <Link
                 className={`header__link${current_category ? '' : ' active'}`}
@@ -96,7 +94,7 @@ export default async function Projets({
                 Tous
               </Link>
               <div className='projets-mobile-nav-categories'>
-                {about.fields.projectFilters.map((category: any) => (
+                {(about.fields as any).projectFilters.map((category: any) => (
                   <Link
                     key={category.fields.title}
                     className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
@@ -139,7 +137,6 @@ export default async function Projets({
       </div>
     </main>
 
-    {/* DESKTOP NAV — passe les categories et la couleur au composant client */}
-    <FilterNav categories={about.fields.projectFilters} navColor={navColor} />
+    <FilterNav categories={(about.fields as any).projectFilters} navColor={navColor} />
   </>
 }
