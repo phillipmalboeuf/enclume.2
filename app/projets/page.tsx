@@ -13,23 +13,18 @@ export async function generateMetadata(
     ContentService.aboutPage(),
   ])
   const search = await searchParams
-  let current_category = about.fields.categories.find((category: any) => category.fields.key === search.category)
+  let current_category = (about.fields as any).projectFilters.find((category: any) => category.fields.key === search.category)
   return {
     title: current_category ? current_category.fields.title : 'Projets',
     description: current_category && current_category.fields.description
   }
 }
 
-/*
-  Color for ALL nav links depending on which filter is active.
-  When no filter (Tous), all links are black.
-*/
 const FILTER_COLOR: Record<string, string> = {
-  horizontalite: '#205a65',
-  curiosite:     '#badddf',
-  integrite:     '#3a5233', // dark forest green
-  audace:        '#274569', // dark blue (was intégrité)
-  engagement:    '#b4e0bb',
+  urbanisme: '#205a65',
+  accompagnement: '#badddf',
+  planification: '#3a5233',
+  recherche: '#274569',
 }
 
 export default async function Projets({
@@ -40,17 +35,15 @@ export default async function Projets({
     ContentService.projects()
   ])
   const search = await searchParams
-  let current_category = about.fields.categories.find((category: any) => category.fields.key === search.category)
-  let current_category_index = about.fields.categories.findIndex((category: any) => category.fields.key === search.category)
+  let current_category = (about.fields as any).projectFilters.find((category: any) => category.fields.key === search.category)
+  let current_category_index = (about.fields as any).projectFilters.findIndex((category: any) => category.fields.key === search.category)
 
-  // All nav links share this one color based on the active filter
   const navColor = current_category ? (FILTER_COLOR[current_category.fields.key] ?? '#111') : '#111'
 
   return <>
     <PageTransition />
 
     <style>{`
-      /* All nav links: same size as project titles (.slight p), underline on active only */
       .projets-nav .header__link {
         border-bottom: none !important;
         text-decoration: none !important;
@@ -61,8 +54,6 @@ export default async function Projets({
         border-bottom: none !important;
         text-decoration: underline !important;
       }
-
-      /* DESKTOP + TABLET fixed nav */
       .projets-fixed-nav {
         position: fixed;
         top: var(--big-top-padding, 8rem);
@@ -73,8 +64,6 @@ export default async function Projets({
         flex-direction: column;
         gap: 0.25rem;
       }
-
-      /* MOBILE nav — hidden by default */
       .projets-mobile-nav {
         display: none;
       }
@@ -83,8 +72,6 @@ export default async function Projets({
         flex-wrap: wrap;
         gap: 0.5rem;
       }
-
-      /* <= 768px : mobile nav, no fixed nav */
       @media (max-width: 768px) {
         .projets-fixed-nav {
           display: none !important;
@@ -96,8 +83,6 @@ export default async function Projets({
           margin-bottom: 2rem;
         }
       }
-
-      /* >= 769px : fixed nav, no mobile nav */
       @media (min-width: 769px) {
         .projets-mobile-nav {
           display: none !important;
@@ -118,10 +103,7 @@ export default async function Projets({
       <div className='padded padded--big_top'>
         <div className='grid grid--guttered'>
 
-          {/* LEFT COLUMN — spacer on desktop/tablet, holds mobile nav on mobile */}
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-
-            {/* MOBILE ONLY NAV — all links share navColor */}
             <nav className='projets-nav projets-mobile-nav' style={{ color: navColor }}>
               <Link
                 className={`header__link${current_category ? '' : ' active'}`}
@@ -131,7 +113,7 @@ export default async function Projets({
                 Tous
               </Link>
               <div className='projets-mobile-nav-categories'>
-                {about.fields.categories.map((category: any) => (
+                {(about.fields as any).projectFilters.map((category: any) => (
                   <Link
                     key={category.fields.title}
                     className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
@@ -143,10 +125,8 @@ export default async function Projets({
                 ))}
               </div>
             </nav>
-
           </div>
 
-          {/* RIGHT PROJECTS COLUMN */}
           <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
             <div className='grid grid--guttered'>
               {projects.items.filter(project =>
@@ -176,7 +156,6 @@ export default async function Projets({
       </div>
     </main>
 
-    {/* DESKTOP + TABLET FIXED NAV — outside <main>, immune to any parent transforms */}
     <nav className='projets-nav projets-fixed-nav' style={{ color: navColor }}>
       <Link
         className={`header__link${current_category ? '' : ' active'}`}
@@ -185,7 +164,7 @@ export default async function Projets({
       >
         Tous
       </Link>
-      {about.fields.categories.map((category: any) => (
+      {(about.fields as any).projectFilters.map((category: any) => (
         <Link
           key={category.fields.title}
           className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
