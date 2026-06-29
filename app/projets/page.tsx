@@ -47,8 +47,9 @@ export default async function Projets({
       .projets-nav .header__link {
         border-bottom: none !important;
         text-decoration: none !important;
-        font-size: 1rem !important;
-        line-height: 1.4 !important;
+        font-size: 1.25rem !important;
+        line-height: 1.5006002401rem !important;
+        color: inherit !important;
       }
       .projets-nav .header__link.active {
         border-bottom: none !important;
