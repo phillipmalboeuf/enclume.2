@@ -31,6 +31,14 @@ export function Header({ locale }: Props) {
 
   return (
     <header ref={elementRef}>
+      <style>{`
+        .menu__container ol:first-of-type .header__link {
+          font-size: 1rem;
+        }
+        .menu__container ol:first-of-type {
+          margin-bottom: 2rem;
+        }
+      `}</style>
       <nav className='grid grid--spaced grid--middle'>
         <Link className='a--no_hover a--no_underline' href='/'><Icon i='logo' /></Link>
 
@@ -43,11 +51,6 @@ export function Header({ locale }: Props) {
           <div className='col hide_on_tablet_portrait'>
             <Link className='header__link' href='/a-propos'>
               {locale === 'fr-CA' ? 'À propos' : 'About us'}
-            </Link>
-          </div>
-          <div className='col hide_on_tablet_portrait'>
-            <Link className='header__link' href='/engagements'>
-              {locale === 'fr-CA' ? 'Engagements' : 'Engagements'}
             </Link>
           </div>
           <div className='col hide_on_tablet_portrait'>
