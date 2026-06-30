@@ -44,12 +44,15 @@ export default async function Projets({
     <PageTransition />
 
     <style>{`
+      .projets-nav {
+        --nav-color: #111;
+      }
       .projets-nav .header__link {
         border-bottom: none !important;
         text-decoration: none !important;
         font-size: 1.25rem !important;
-        line-height: 1.5006002401rem !important;
-        color: inherit !important;
+        line-height: 1.1 !important;
+        color: var(--nav-color) !important;
       }
       .projets-nav .header__link.active {
         border-bottom: none !important;
@@ -63,7 +66,7 @@ export default async function Projets({
         z-index: 10;
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.75rem;
       }
       .projets-mobile-nav {
         display: none;
@@ -80,7 +83,7 @@ export default async function Projets({
         .projets-mobile-nav {
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.75rem;
           margin-bottom: 2rem;
         }
       }
@@ -105,11 +108,10 @@ export default async function Projets({
         <div className='grid grid--guttered'>
 
           <div className='col col--2of12 col--tablet_landscape--3of12 col--tablet_portrait--12of12'>
-            <nav className='projets-nav projets-mobile-nav' style={{ color: navColor }}>
+            <nav className='projets-nav projets-mobile-nav' style={{ '--nav-color': navColor } as any}>
               <Link
                 className={`header__link${current_category ? '' : ' active'}`}
                 href='/projets'
-                style={{ color: navColor }}
               >
                 Tous
               </Link>
@@ -119,7 +121,6 @@ export default async function Projets({
                     key={category.fields.title}
                     className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
                     href={`/projets?category=${category.fields.key}`}
-                    style={{ color: navColor }}
                   >
                     <LE c={category} k='title' />
                   </Link>
@@ -157,11 +158,10 @@ export default async function Projets({
       </div>
     </main>
 
-    <nav className='projets-nav projets-fixed-nav' style={{ color: navColor }}>
+    <nav className='projets-nav projets-fixed-nav' style={{ '--nav-color': navColor } as any}>
       <Link
         className={`header__link${current_category ? '' : ' active'}`}
         href='/projets'
-        style={{ color: navColor }}
       >
         Tous
       </Link>
@@ -170,7 +170,6 @@ export default async function Projets({
           key={category.fields.title}
           className={`header__link${current_category && current_category.fields.key === category.fields.key ? ' active' : ''}`}
           href={`/projets?category=${category.fields.key}`}
-          style={{ color: navColor }}
         >
           <LE c={category} k='title' />
         </Link>
