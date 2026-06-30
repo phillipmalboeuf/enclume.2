@@ -32,9 +32,6 @@ export function Header({ locale }: Props) {
   return (
     <header ref={elementRef}>
       <style>{`
-        .menu__container ol:first-of-type .header__link {
-          font-size: 1rem;
-        }
         .menu__container ol:first-of-type {
           margin-bottom: 2rem;
         }
