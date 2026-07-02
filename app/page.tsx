@@ -9,6 +9,8 @@ import { Metadata, ResolvingMetadata } from 'next'
 import { Slider } from '@/components/slider'
 import { Picture } from '@/components/picture'
 
+export const revalidate = 0
+
 export async function generateMetadata(
 ): Promise<Metadata> {
   const homepage = await ContentService.homepage()
