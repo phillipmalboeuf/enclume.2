@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
         <div className='grid grid--guttered grid--bottom'>
           <div className='col col--4of12 col--tablet_portrait--12of12'>
-            <h4><LE c={homepage} k='description' /></h4>
+            <p style={{ fontSize: '1rem', maxWidth: '12rem' }}><LE c={homepage} k='description' /></p>
             <div className='normal_bottom' />
           </div>
           <div className='col col--8of12 col--tablet_portrait--12of12'>
