@@ -131,7 +131,7 @@ export default async function Projets({
 
           <div className='col col--10of12 col--tablet_landscape--9of12 col--tablet_portrait--12of12'>
             <div className='grid grid--guttered'>
-              {projects.items.filter(project =>
+              {projects.items.filter(project => project.sys.publishedVersion).filter(project =>
                 !current_category
                 || (project.fields.categories && project.fields.categories.length > 0 && project.fields.categories.filter((category: any) => category.fields).map((category: any) => category.fields.key).includes(current_category.fields.key))
                 || (project.fields.category && project.fields.category.fields.key === current_category.fields.key)
