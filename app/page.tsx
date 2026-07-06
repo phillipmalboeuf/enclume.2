@@ -24,7 +24,7 @@ export default async function Home() {
       <div className='padded padded--big_top padded--flat_bottom relative nooverflow'>
         <Icon i='anvil_homepage' />
         <div>
-          <LRE c={homepage} k='introduction' />
+          <LE c={homepage} k='introduction' />
         </div>
        <style>{`
   .slide-crop {
