@@ -79,23 +79,13 @@ export function Header({ locale }: Props) {
             <div className='menu__container grid grid--guttered grid--column grid--spaced'>
               <ol>
                 <li className='menu__item'>
-                  <Link className='header__link' href='/projets' onClick={e => summaryRef.current?.click()}>
-                    {locale === 'fr-CA' ? 'Projets' : 'Projects'}
-                  </Link>
-                </li>
-                <li className='menu__item'>
-                  <Link className='header__link' href='/a-propos' onClick={e => summaryRef.current?.click()}>
-                    {locale === 'fr-CA' ? 'À propos' : 'About us'}
-                  </Link>
-                </li>
-                <li className='menu__item'>
                   <Link className='header__link' href='/engagements' onClick={e => summaryRef.current?.click()}>
                     {locale === 'fr-CA' ? 'Engagements' : 'Engagements'}
                   </Link>
                 </li>
                 <li className='menu__item'>
-                  <Link className='header__link' href='/contact' onClick={e => summaryRef.current?.click()}>
-                    {locale === 'fr-CA' ? 'Contact' : 'Contact'}
+                  <Link className='header__link' href='/prix' onClick={e => summaryRef.current?.click()}>
+                    {locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
                   </Link>
                 </li>
               </ol>
