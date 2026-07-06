@@ -24,28 +24,27 @@ export default async function Home() {
       <div className='padded padded--big_top padded--flat_bottom relative nooverflow'>
         <Icon i='anvil_homepage' />
         <div>
-          <LE c={homepage} k='introduction' />
+          <LRE c={homepage} k='introduction' />
         </div>
-       <style>{`
-  .slide-crop {
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-  }
-  .slide-crop img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  @media (max-width: 768px) {
-    .home-col-text { order: 2; }
-    .home-col-image { order: 1; }
-    .home-grid { display: flex; flex-direction: column; }
-    .figure--caption figcaption { display: none; }
-  }
-`}</style>
+        <style>{`
+          .slide-crop {
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
+          }
+          .slide-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          @media (max-width: 768px) {
+            .home-col-text { order: 2; }
+            .home-col-image { order: 1; }
+            .home-grid { display: flex; flex-direction: column; }
+          }
+        `}</style>
         <div className='grid grid--guttered grid--bottom home-grid'>
           <div className='col col--4of12 col--tablet_portrait--12of12 home-col-text'>
-            <p style={{ lineHeight: 1.2 }><LE c={homepage} k='description' /></p>
+            <p><LE c={homepage} k='description' /></p>
             <div className='normal_bottom' />
           </div>
           <div className='col col--8of12 col--tablet_portrait--12of12 home-col-image'>
