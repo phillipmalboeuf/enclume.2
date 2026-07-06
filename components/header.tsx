@@ -1,21 +1,15 @@
 'use client'
-
 import Link from 'next/link'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
-
 import { Icon } from './icon'
-
 interface Props {
   locale: string
 }
-
 export function Header({ locale }: Props) {
   const elementRef = useRef<HTMLElement>(null)
   const summaryRef = useRef<HTMLElement>(null)
-
   const [isOpen, setIsOpen] = useState(false)
-
   useEffect(() => {
     if (elementRef.current) {
       const Headroom = require('headroom.js')
@@ -28,7 +22,6 @@ export function Header({ locale }: Props) {
       hr.init()
     }
   }, [])
-
   return (
     <header ref={elementRef}>
       <style>{`
@@ -38,7 +31,6 @@ export function Header({ locale }: Props) {
       `}</style>
       <nav className='grid grid--spaced grid--middle'>
         <Link className='a--no_hover a--no_underline' href='/'><Icon i='logo' /></Link>
-
         <div className='grid grid--guttered grid--middle'>
           <div className='col hide_on_tablet_portrait'>
             <Link className='header__link' href='/projets'>
@@ -55,14 +47,11 @@ export function Header({ locale }: Props) {
               {locale === 'fr-CA' ? 'Contact' : 'Contact'}
             </Link>
           </div>
-
           <details className={`col menu ${isOpen ? 'menu--open' : ''}`}>
             <summary ref={summaryRef} onClick={e => {
               e.preventDefault()
-              
               if (isOpen) {
                 setIsOpen(false)
-
                 setTimeout(() => {
                   (summaryRef.current?.parentElement as HTMLDetailsElement).removeAttribute('open')
                 }, 666)
@@ -75,9 +64,18 @@ export function Header({ locale }: Props) {
             }}>
               <Icon i='plus' />
             </summary>
-
             <div className='menu__container grid grid--guttered grid--column grid--spaced'>
               <ol>
+                <li className='menu__item tablet_portrait_only'>
+                  <Link className='header__link' href='/projets' onClick={e => summaryRef.current?.click()}>
+                    {locale === 'fr-CA' ? 'Projets' : 'Projects'}
+                  </Link>
+                </li>
+                <li className='menu__item tablet_portrait_only'>
+                  <Link className='header__link' href='/a-propos' onClick={e => summaryRef.current?.click()}>
+                    {locale === 'fr-CA' ? 'À propos' : 'About us'}
+                  </Link>
+                </li>
                 <li className='menu__item'>
                   <Link className='header__link' href='/engagements' onClick={e => summaryRef.current?.click()}>
                     {locale === 'fr-CA' ? 'Engagements' : 'Engagements'}
@@ -86,6 +84,11 @@ export function Header({ locale }: Props) {
                 <li className='menu__item'>
                   <Link className='header__link' href='/prix' onClick={e => summaryRef.current?.click()}>
                     {locale === 'fr-CA' ? 'Prix Enclume' : 'Enclume awards'}
+                  </Link>
+                </li>
+                <li className='menu__item tablet_portrait_only'>
+                  <Link className='header__link' href='/contact' onClick={e => summaryRef.current?.click()}>
+                    {locale === 'fr-CA' ? 'Contact' : 'Contact'}
                   </Link>
                 </li>
               </ol>
