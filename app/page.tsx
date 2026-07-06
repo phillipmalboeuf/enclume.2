@@ -44,7 +44,7 @@ export default async function Home() {
         `}</style>
         <div className='grid grid--guttered grid--bottom home-grid'>
           <div className='col col--4of12 col--tablet_portrait--12of12 home-col-text'>
-            <p><LE c={homepage} k='description' /></p>
+            <p style={{ lineHeight: 1.2 }><LE c={homepage} k='description' /></p>
             <div className='normal_bottom' />
           </div>
           <div className='col col--8of12 col--tablet_portrait--12of12 home-col-image'>
