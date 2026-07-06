@@ -26,17 +26,35 @@ export default async function Home() {
         <div>
           <LRE c={homepage} k='introduction' />
         </div>
+        <style>{`
+          .slide-crop {
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
+          }
+          .slide-crop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          @media (max-width: 768px) {
+            .home-col-image { order: 1; }
+            .home-col-text { order: 2; }
+          }
+        `}</style>
         <div className='grid grid--guttered grid--bottom'>
-          <div className='col col--4of12 col--tablet_portrait--12of12'>
-            <p style={{ fontSize: '1rem', maxWidth: '12rem' }}><LE c={homepage} k='description' /></p>
-            <div className='normal_bottom' />
-          </div>
-          <div className='col col--8of12 col--tablet_portrait--12of12'>
-            <Slider draggable={false} fade={true} adaptiveHeight={true} autoPlay={6666} slides={homepage.fields.gallerie.map((slide: any)=>
+          <div className='col col--8of12 col--tablet_portrait--12of12 home-col-image'>
+            <Slider draggable={false} fade={true} adaptiveHeight={false} autoPlay={6666} slides={homepage.fields.gallerie.map((slide: any)=>
               <figure className='figure--caption' key={slide.sys.id}>
-                <Picture src={slide.fields.file.url} alt={slide.fields.title} />
+                <div className='slide-crop'>
+                  <Picture src={slide.fields.file.url} alt={slide.fields.title} />
+                </div>
+                {slide.fields.description && <figcaption className='teal_back'>{slide.fields.description}</figcaption>}
               </figure>
             )} />
+          </div>
+          <div className='col col--4of12 col--tablet_portrait--12of12 home-col-text'>
+            <p><LE c={homepage} k='description' /></p>
+            <div className='normal_bottom' />
           </div>
         </div>
       </div>
