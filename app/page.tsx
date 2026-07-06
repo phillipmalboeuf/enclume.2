@@ -41,6 +41,13 @@ export default async function Home() {
             .home-col-text { order: 2; }
             .figure--caption figcaption { display: none; }
           }
+          @media (max-width: 768px) {
+  .home-col-image { order: 1; }
+  .home-col-text { order: 2; }
+  .figure--caption figcaption { display: none; }
+  .icon--anvil_homepage path[fill="#BDDEBE"],
+  .icon--anvil_homepage rect { display: none; }
+}
         `}</style>
         <div className='grid grid--guttered grid--bottom'>
           <div className='col col--8of12 col--tablet_portrait--12of12 home-col-image'>
