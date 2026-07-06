@@ -37,16 +37,11 @@ export default async function Home() {
             object-fit: cover;
           }
           @media (max-width: 768px) {
-            .home-col-text { order: 2; }
             .home-col-image { order: 1; }
-            .home-grid { display: flex; flex-direction: column; }
+            .home-col-text { order: 2; }
           }
         `}</style>
-        <div className='grid grid--guttered grid--bottom home-grid'>
-          <div className='col col--4of12 col--tablet_portrait--12of12 home-col-text'>
-            <p><LE c={homepage} k='description' /></p>
-            <div className='normal_bottom' />
-          </div>
+        <div className='grid grid--guttered grid--bottom'>
           <div className='col col--8of12 col--tablet_portrait--12of12 home-col-image'>
             <Slider draggable={false} fade={true} adaptiveHeight={false} autoPlay={6666} slides={homepage.fields.gallerie.map((slide: any)=>
               <figure className='figure--caption' key={slide.sys.id}>
@@ -56,6 +51,10 @@ export default async function Home() {
                 {slide.fields.description && <figcaption className='teal_back'>{slide.fields.description}</figcaption>}
               </figure>
             )} />
+          </div>
+          <div className='col col--4of12 col--tablet_portrait--12of12 home-col-text'>
+            <p><LE c={homepage} k='description' /></p>
+            <div className='normal_bottom' />
           </div>
         </div>
       </div>
