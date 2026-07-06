@@ -39,6 +39,7 @@ export default async function Home() {
           @media (max-width: 768px) {
             .home-col-image { order: 1; }
             .home-col-text { order: 2; }
+            .figure--caption figcaption { display: none; }
           }
         `}</style>
         <div className='grid grid--guttered grid--bottom'>
