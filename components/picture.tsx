@@ -6,7 +6,7 @@ interface Props {
   onLoad?: (e: React.SyntheticEvent<HTMLElement>) => void
 }
 const url = (src: string, size: number): string => {
-  return `https:${src.replace('images.ctfassets.net/esgvtsxg5drv', 'enclume.imgix.net')}?auto=format&w=${size}`
+  return `https:${src.replace('downloads.ctfassets.net', 'images.ctfassets.net').replace('images.ctfassets.net', 'philsassets.b-cdn.net')}?w=${size}`
 }
 export const Picture: FunctionComponent<Props> = props => {
 	return <picture onLoad={props.onLoad}>
